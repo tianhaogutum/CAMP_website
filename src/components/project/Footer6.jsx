@@ -27,7 +27,7 @@ export function Footer6() {
       <div className="container">
         <div className="lg:flex lg:items-start lg:justify-between">
           <div className="mb-6 lg:mb-0">
-            <h1 className="text-lg font-semibold">Subscribe to updates</h1>
+                            <h1 className="text-2xl font-semibold">Subscribe to updates</h1>
             <p>Stay informed with our latest research and insights.</p>
           </div>
           <div className="max-w-md lg:min-w-[25rem]">

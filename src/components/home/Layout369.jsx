@@ -5,7 +5,6 @@ import React from "react";
 export function Layout369() {
   return (
     <section className="relative px-[5%] py-16 md:py-24 lg:py-28">
-      <div className="absolute inset-0 z-0" style={{backgroundColor: '#f1f1f1'}} />
       <div className="relative z-10 container">
         <div className="mb-12 md:mb-18 lg:mb-20">
           <div className="mx-auto max-w-lg text-center">
