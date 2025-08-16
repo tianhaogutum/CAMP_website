@@ -15,11 +15,16 @@ export function Header69() {
         </p>
       </div>
       <div className="absolute inset-0 z-0">
-        <img
-          src="/images/contact.jpg"
-          className="size-full object-cover"
-          alt="Relume placeholder image"
-        />
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="w-full h-full object-cover object-center"
+        >
+          <source src="/images/research.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
         <div className="absolute inset-0 bg-neutral-darkest/50" />
       </div>
     </section>

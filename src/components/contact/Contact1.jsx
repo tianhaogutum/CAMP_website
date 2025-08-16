@@ -11,11 +11,7 @@ export function Contact1() {
   return (
     <section className="px-[5%] py-16 md:py-24 lg:py-28">
       <div className="container max-w-lg">
-        <div className="mx-auto mb-8 w-full max-w-lg text-center md:mb-10 lg:mb-12">
-          <p className="mb-3 font-semibold md:mb-4">Connect</p>
-          <h2 className="mb-5 text-4xl font-bold md:mb-6 md:text-5xl">Get in Touch</h2>
-          <p className="text-lg">We'd love to hear from you!</p>
-        </div>
+
         <form className="mx-auto grid w-full max-w-md grid-cols-1 gap-6">
           <div className="grid w-full items-center">
             <Label htmlFor="name" className="mb-2">

@@ -239,10 +239,7 @@ export function Footer6() {
         <div className="h-px w-full bg-border-primary" />
         <div className="text-sm flex flex-col items-start pt-6 pb-4 sm:flex-row sm:items-center sm:justify-between md:pt-8 md:pb-0">
           <a href="#" className="mb-6 sm:mb-0">
-            <img
-              src="https://d22po4pjz3o32e.cloudfront.net/logo-image.svg"
-              alt="Logo image"
-            />
+            <span className="text-2xl font-bold text-text-primary">CEFS</span>
           </a>
           <p className="text-sm">© 2024 Relume. All rights reserved.</p>
         </div>

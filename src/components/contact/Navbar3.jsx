@@ -76,10 +76,7 @@ export function Navbar3() {
       )}
       
       <Link to="/" className="flex min-h-16 shrink-0 items-center">
-        <img
-          src="https://d22po4pjz3o32e.cloudfront.net/logo-image.svg"
-          alt="Logo image"
-        />
+        <span className="text-xl font-bold text-text-primary">CEFS</span>
       </Link>
       <div className="flex min-h-16 items-center justify-end gap-x-4">
         <div>
