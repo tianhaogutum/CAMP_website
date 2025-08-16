@@ -24,8 +24,8 @@ export function Footer6() {
       <div className="container">
         <div className="lg:flex lg:items-start lg:justify-between">
           <div className="mb-6 lg:mb-0">
-            <h1 className="text-lg font-semibold">Subscribe to updates</h1>
-            <p>Stay informed with our latest research and insights.</p>
+            <h1 className="text-2xl font-semibold">Subscribe to updates</h1>
+            <p className="text-lg">Stay informed with our latest research and insights.</p>
           </div>
           <div className="max-w-md lg:min-w-[25rem]">
             <form
@@ -38,12 +38,13 @@ export function Footer6() {
                 placeholder="Your email here"
                 value={formState.email}
                 onChange={formState.handleSetEmail}
+                className="text-lg"
               />
-              <Button title="Subscribe" variant="secondary" size="sm">
+              <Button title="Subscribe" variant="secondary" size="sm" className="text-lg px-8 py-3">
                 Subscribe
               </Button>
             </form>
-            <p className="text-tiny">
+            <p className="text-base">
               By subscribing, you agree to our Privacy Policy.
             </p>
           </div>
@@ -237,8 +238,9 @@ export function Footer6() {
         <div className="text-sm flex flex-col items-start pt-6 pb-4 sm:flex-row sm:items-center sm:justify-between md:pt-8 md:pb-0">
           <a href="#" className="mb-6 sm:mb-0">
             <img
-              src="https://d22po4pjz3o32e.cloudfront.net/logo-image.svg"
-              alt="Logo image"
+              src="/images/logo.png"
+              alt="CEFS Logo"
+              className="h-12 w-auto object-contain"
             />
           </a>
           <p className="text-sm">© 2024 Relume. All rights reserved.</p>

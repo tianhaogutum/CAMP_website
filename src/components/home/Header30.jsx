@@ -5,33 +5,33 @@ export function Header30() {
   return (
     <section className="relative px-[5%]">
       <div className="relative z-10 container">
-        <div className="flex max-h-[60rem] min-h-svh items-center justify-center py-16 text-center md:py-24 lg:py-28">
-          <div className="w-full max-w-lg">
-            <h1 className="mb-5 text-5xl font-bold text-white md:mb-6 md:text-6xl lg:text-7xl">
-              Exploring Innovations in Private Equity Research
+        <div className="flex max-h-[40rem] min-h-[80vh] items-center justify-center py-12 text-center md:py-16 lg:py-20">
+          <div className="w-full max-w-4xl">
+            <h1 className="mb-4 text-4xl font-bold text-white leading-tight md:mb-5 md:text-5xl lg:text-6xl">
+              Shaping the Future of Private Markets with AI & Advanced Analytics
             </h1>
-            <p className="text-lg text-white md:text-xl">
-              Welcome to our German research group dedicated to advancing
-              knowledge in the private equity sector. Our team is committed to
-              delivering insightful research and innovative solutions that drive
-              industry growth.
+            <p className="text-base text-white md:text-lg max-w-3xl mx-auto">
+              We are the <span className="font-bold">CEFS AI & Advanced Analytics in Private Markets Group</span> - we aim to redefine the future of private markets through responsible AI and advanced analytics, pioneering a more transparent, inclusive, and intelligent investment ecosystem that transforms how capital is allocated and value is created
             </p>
-            <div className="mt-6 flex items-center justify-center gap-x-4 md:mt-8">
-              <Button title="Learn More">Learn More</Button>
-              <Button title="Sign Up" variant="secondary-alt">
-                Sign Up
-              </Button>
-            </div>
+
           </div>
         </div>
       </div>
       <div className="absolute inset-0 z-0">
-        <img
-          src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg"
-          className="size-full object-cover"
-          alt="Relume placeholder image"
-        />
-        <div className="absolute inset-0 bg-black/50" />
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="w-full h-full object-cover object-center"
+          onError={(e) => console.error('Video error:', e)}
+          onLoadStart={() => console.log('Video loading started')}
+          onCanPlay={() => console.log('Video can play')}
+        >
+          <source src="/images/homepage.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        <div className="absolute inset-0 bg-black/60" />
       </div>
     </section>
   );

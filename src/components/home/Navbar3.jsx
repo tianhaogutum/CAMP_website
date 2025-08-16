@@ -32,12 +32,7 @@ export function Navbar3() {
           useActive.isMobileMenuOpen ? 'block' : 'hidden'
         } absolute top-0 left-0 z-50 flex h-dvh w-[90%] flex-col border-r border-border-primary bg-background-primary px-[5%] pb-4 md:w-[80%] lg:visible lg:static lg:-ml-4 lg:flex lg:h-auto lg:w-auto lg:flex-row lg:border-none lg:px-0 lg:pb-0`}
       >
-        <a href="#" className="mt-10 mb-8 flex shrink-0 lg:hidden">
-          <img
-            src="https://d22po4pjz3o32e.cloudfront.net/logo-image.svg"
-            alt="Logo image"
-          />
-        </a>
+
         <Link
           to="/"
           className="text-base relative block py-3 lg:px-4 lg:py-2"
@@ -76,10 +71,7 @@ export function Navbar3() {
       )}
       
       <Link to="/" className="flex min-h-16 shrink-0 items-center">
-        <img
-          src="https://d22po4pjz3o32e.cloudfront.net/logo-image.svg"
-          alt="Logo image"
-        />
+        <span className="text-xl font-bold text-text-primary">CEFS</span>
       </Link>
       <div className="flex min-h-16 items-center justify-end gap-x-4">
         <div>
