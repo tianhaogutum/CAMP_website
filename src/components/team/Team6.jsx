@@ -9,7 +9,6 @@ export function Team6() {
     <section className="px-[5%] py-16 md:py-24 lg:py-28">
       <div className="container">
         <div className="mx-auto mb-12 max-w-lg text-center md:mb-18 lg:mb-20">
-          <p className="mb-3 font-semibold md:mb-4">Expertise</p>
           <h2 className="mb-5 text-4xl font-bold md:mb-6 md:text-5xl">
             Research Assistant
           </h2>
@@ -24,11 +23,11 @@ export function Team6() {
               />
             </div>
             <div className="mb-3 md:mb-4">
-              <h5 className="text-xl font-semibold">Anna Müller</h5>
-              <h6 className="text-lg">Lead Researcher</h6>
+              <h5 className="text-xl font-semibold">Nicolas Pardon, M.Sc</h5>
+              <h6 className="text-lg">Research Assistant</h6>
             </div>
             <p>
-              Passionate about private equity, she leads innovative research
+              Passionate about private equity, he leads innovative research
               initiatives.
             </p>
             <div className="mt-6 grid grid-flow-col grid-cols-[max-content] gap-3.5 self-center">
@@ -52,8 +51,8 @@ export function Team6() {
               />
             </div>
             <div className="mb-3 md:mb-4">
-              <h5 className="text-xl font-semibold">Markus Schmidt</h5>
-              <h6 className="text-lg">Data Analyst</h6>
+              <h5 className="text-xl font-semibold">Julius Maisch, M.Sc.</h5>
+              <h6 className="text-lg">Research Assistant</h6>
             </div>
             <p>
               Specialises in data-driven insights to enhance investment
@@ -180,17 +179,7 @@ export function Team6() {
             </div>
           </div>
         </div>
-        <div className="mx-auto mt-14 w-full max-w-md text-center md:mt-20 lg:mt-24">
-          <h4 className="mb-3 text-2xl font-bold md:mb-4 mb-3 font-bold md:mb-4">We're hiring!</h4>
-          <p className="text-lg">
-            Join our dynamic team and make an impact.
-          </p>
-          <div className="mt-6 flex items-center justify-center gap-x-4 text-center md:mt-8">
-            <Button title="Open positions" variant="secondary">
-              Open positions
-            </Button>
-          </div>
-        </div>
+
       </div>
     </section>
   );

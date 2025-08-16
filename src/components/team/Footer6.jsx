@@ -1,7 +1,4 @@
-"use client";
-
-import { Button } from "@relume_io/relume-ui";
-import { Input } from "@relume_io/relume-ui";
+import { Button, Input } from "@relume_io/relume-ui";
 import React, { useState } from "react";
 
 const useForm = () => {
@@ -23,12 +20,12 @@ const useForm = () => {
 export function Footer6() {
   const formState = useForm();
   return (
-    <footer className="px-[5%] py-12 md:py-18 lg:py-20">
+    <footer className="px-[5%] pb-8 md:pb-12 lg:pb-16">
       <div className="container">
         <div className="lg:flex lg:items-start lg:justify-between">
           <div className="mb-6 lg:mb-0">
-                            <h1 className="text-2xl font-semibold">Subscribe to updates</h1>
-            <p>Stay informed with our latest research and insights.</p>
+            <h1 className="text-2xl font-semibold">Subscribe to updates</h1>
+            <p className="text-lg">Stay informed with our latest research and insights.</p>
           </div>
           <div className="max-w-md lg:min-w-[25rem]">
             <form
@@ -41,12 +38,13 @@ export function Footer6() {
                 placeholder="Your email here"
                 value={formState.email}
                 onChange={formState.handleSetEmail}
+                className="text-lg"
               />
-              <Button title="Subscribe" variant="secondary" size="sm">
+              <Button title="Subscribe" variant="secondary" size="sm" className="text-lg px-8 py-3">
                 Subscribe
               </Button>
             </form>
-            <p className="text-tiny">
+            <p className="text-base">
               By subscribing, you agree to our Privacy Policy.
             </p>
           </div>
@@ -239,7 +237,11 @@ export function Footer6() {
         <div className="h-px w-full bg-border-primary" />
         <div className="text-sm flex flex-col items-start pt-6 pb-4 sm:flex-row sm:items-center sm:justify-between md:pt-8 md:pb-0">
           <a href="#" className="mb-6 sm:mb-0">
-            <span className="text-2xl font-bold text-text-primary">CEFS</span>
+            <img
+              src="/images/logo.png"
+              alt="CEFS Logo"
+              className="h-12 w-auto object-contain"
+            />
           </a>
           <p className="text-sm">© 2024 Relume. All rights reserved.</p>
         </div>

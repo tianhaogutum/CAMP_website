@@ -16,20 +16,19 @@ export function Team14() {
         </div>
         <div className="grid grid-cols-1 items-start justify-items-start gap-x-8 gap-y-12 md:gap-16 lg:grid-cols-2">
           <div className="flex flex-col">
-            <div className="relative mb-5 aspect-square size-full overflow-hidden md:mb-6 md:pt-[100%]">
+            <div className="relative mb-5 aspect-square w-3/4 h-3/4 overflow-hidden md:mb-6">
               <img
-                src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg"
-                alt="Relume placeholder image 1"
-                className="absolute inset-0 size-full object-cover"
+                src="/images/BraunReiner.jpg"
+                alt="Prof. Dr. Reiner Braun"
+                className="absolute inset-0 w-full h-full object-cover"
               />
             </div>
             <div className="mb-3 md:mb-4">
-              <h5 className="text-xl font-semibold">Alice Schmidt</h5>
-              <h6 className="text-lg">Research Director</h6>
+              <h5 className="text-xl font-semibold">Prof. Dr. Reiner Braun</h5>
+              <h6 className="text-lg">Chair of Entrepreneurial Finance</h6>
             </div>
             <p>
-              Leading innovative research in private equity strategies and
-              market analysis.
+              Leading research in entrepreneurial finance and private equity, with expertise in AI applications for investment decision-making and market analysis. Professor at TUM School of Management since 2015.
             </p>
             <div className="mt-6 grid grid-flow-col grid-cols-[max-content] gap-3.5 self-start">
               <a href="#">
@@ -44,12 +43,35 @@ export function Team14() {
             </div>
           </div>
           <div className="flex flex-col">
-            <div className="mb-3 md:mb-4">
-              <h5 className="text-xl font-semibold">Full name</h5>
-            </div>
+            <ul className="space-y-4 text-lg">
+              <li className="flex items-start">
+                <span className="mr-4 text-blue-600 text-xl">•</span>
+                <span>Professor and Chair of Entrepreneurial Finance at the Technical University of Munich (TUM) since 2015.</span>
+              </li>
+              <li className="flex items-start">
+                <span className="mr-4 text-blue-600 text-xl">•</span>
+                <span>Academic Program Director for Master in Management and International Master in Industrial Management at TUM.</span>
+              </li>
+              <li className="flex items-start">
+                <span className="mr-4 text-blue-600 text-xl">•</span>
+                <span>Former Full Professor of Entrepreneurial Finance at Friedrich-Alexander University Erlangen-Nürnberg (2013–2015).</span>
+              </li>
+              <li className="flex items-start">
+                <span className="mr-4 text-blue-600 text-xl">•</span>
+                <span>Visiting scholar at Harvard Business School, University of Oxford, and Manchester Metropolitan University.</span>
+              </li>
+              <li className="flex items-start">
+                <span className="mr-4 text-blue-600 text-xl">•</span>
+                <span>Recipient of the Scientific Award of the German Association for Alternative Investments (2011) and invited as "Global Leader of Tomorrow" at the St. Gallen Symposium (2010).</span>
+              </li>
+              <li className="flex items-start">
+                <span className="mr-4 text-blue-600 text-xl">•</span>
+                <span>Founding Partner of Captona Beteiligungsgesellschaft mbH with long-standing experience in entrepreneurial finance and private equity.</span>
+              </li>
+            </ul>
           </div>
         </div>
-        <div className="mt-14 w-full max-w-md md:mt-20 lg:mt-24" />
+        <div className="mt-8 w-full max-w-md md:mt-10 lg:mt-12" />
       </div>
     </section>
   );
