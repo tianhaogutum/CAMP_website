@@ -20,7 +20,7 @@ const useForm = () => {
 export function Footer6() {
   const formState = useForm();
   return (
-    <footer className="px-[5%] pb-8 md:pb-12 lg:pb-16">
+    <footer className="px-[5%] pb-8 md:pb-12 lg:pb-16"> 
       <div className="container">
         <div className="lg:flex lg:items-start lg:justify-between">
           <div className="mb-6 lg:mb-0">
