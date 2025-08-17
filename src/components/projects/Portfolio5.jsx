@@ -14,7 +14,7 @@ export function Portfolio5() {
           <h2 className="mb-5 text-4xl font-bold md:mb-6 md:text-5xl">
             Our Key Research Projects
           </h2>
-          <p className="text-lg">
+          <p className="text-lg mb-12 md:mb-16">
             Explore our most impactful research projects in private equity and venture capital.
           </p>
         </div>

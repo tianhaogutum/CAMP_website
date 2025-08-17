@@ -15,10 +15,9 @@ export function Cta3() {
             Reach out to explore collaboration opportunities or to learn more
             about our projects.
           </p>
-          <div className="mt-6 flex flex-wrap gap-4 md:mt-8">
-            <Button title="Contact">Contact</Button>
-            <Button title="Inquire" variant="secondary-alt">
-              Inquire
+          <div className="mt-6 flex justify-center md:mt-8">
+            <Button title="Contact" variant="secondary-alt" className="text-white border-white hover:bg-white hover:text-gray-900" asChild>
+              <a href="/contact">Contact</a>
             </Button>
           </div>
         </div>
