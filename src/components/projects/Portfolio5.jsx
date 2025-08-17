@@ -7,8 +7,8 @@ import { ChevronRight } from "relume-icons";
 
 export function Portfolio5() {
   return (
-    <section className="px-[5%] py-16 md:py-24 lg:py-28">
-      <div className="container">
+    <section className="w-full py-16 md:py-24 lg:py-28">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-lg text-center">
           <p className="mb-3 font-semibold md:mb-4">Featured Projects</p>
           <h2 className="mb-5 text-4xl font-bold md:mb-6 md:text-5xl">

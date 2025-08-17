@@ -4,8 +4,8 @@ import React from "react";
 
 export function Logo2() {
   return (
-    <section className="px-[5%] py-12 md:py-16 lg:py-20">
-      <div className="container">
+    <section className="w-full py-12 md:py-16 lg:py-20">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <h1 className="text-xl font-bold md:max-w-none lg:max-w-none">
             We sincerely thank Equation AG for their collaboration and sponsorship.

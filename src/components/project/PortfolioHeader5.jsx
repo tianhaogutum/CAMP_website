@@ -5,8 +5,8 @@ import React from "react";
 
 export function PortfolioHeader5() {
   return (
-    <section className="px-[5%]">
-      <div className="container">
+    <section className="w-full">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 items-start gap-12 py-16 md:grid-cols-[1.5fr_1fr] md:py-24 lg:gap-x-20 lg:py-28">
           <div>
             <h1 className="mb-5 text-5xl font-bold md:mb-6 md:text-6xl lg:text-7xl">

@@ -5,8 +5,8 @@ import { Call, Mail } from "relume-icons";
 
 export function Contact16() {
   return (
-    <section className="px-[5%] py-6 md:py-8 lg:py-10">
-      <div className="container">
+    <section className="w-full py-6 md:py-8 lg:py-10">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div>
           <div className="mb-6 grid auto-cols-fr grid-cols-1 gap-x-6 gap-y-6 md:mb-8 md:grid-cols-[1fr_.75fr] md:gap-x-8 md:gap-y-8">
             <div className="max-w-lg text-center py-4 md:py-6 px-4 md:px-6">

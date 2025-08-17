@@ -4,8 +4,8 @@ import React from "react";
 
 export function Layout369() {
   return (
-    <section className="relative px-[5%] py-16 md:py-24 lg:py-28">
-      <div className="relative z-10 container">
+    <section className="relative w-full py-16 md:py-24 lg:py-28">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-12 md:mb-18 lg:mb-20">
           <div className="mx-auto max-w-lg text-center">
             <p className="mb-3 font-semibold md:mb-4">Driving Research Excellence</p>

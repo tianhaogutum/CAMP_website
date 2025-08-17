@@ -6,9 +6,9 @@ import { ChevronRight } from "relume-icons";
 
 export function Contact26() {
   return (
-    <section className="relative px-[5%] py-16 md:py-24 lg:py-28">
+    <section className="relative w-full py-16 md:py-24 lg:py-28">
       <div className="absolute inset-0 z-0" style={{backgroundColor: '#f1f1f1'}} />
-      <div className="relative z-10 container">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mx-auto mb-12 flex max-w-lg flex-col justify-center text-center md:mb-18 lg:mb-20">
           <h2 className="mb-5 text-4xl font-bold md:mb-6 md:text-5xl">Locations</h2>
           <p className="text-lg">Visit us at our strategic locations in Munich's academic and business districts.</p>

@@ -5,8 +5,8 @@ import React from "react";
 
 export function Header65() {
   return (
-    <section className="relative px-[5%] py-16 md:py-24 lg:py-28">
-      <div className="relative z-10 container mx-auto max-w-lg text-center">
+    <section className="relative w-full py-16 md:py-24 lg:py-28">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
 
         <h1 className="mb-5 text-5xl font-bold text-white md:mb-6 md:text-6xl lg:text-7xl">
           Get in Touch

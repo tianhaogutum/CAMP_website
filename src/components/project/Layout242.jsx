@@ -6,8 +6,8 @@ import { ChevronRight, RelumeIcon } from "relume-icons";
 
 export function Layout242() {
   return (
-    <section className="px-[5%] py-16 md:py-24 lg:py-28">
-      <div className="container">
+    <section className="w-full py-16 md:py-24 lg:py-28">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col items-start">
           <div className="mb-12 w-full max-w-lg md:mb-18 lg:mb-20">
             <h3 className="mb-5 text-3xl font-bold md:mb-6 md:text-4xl font-bold">

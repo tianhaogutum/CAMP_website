@@ -5,8 +5,8 @@ import React from "react";
 
 export function Cta19() {
   return (
-    <section className="relative px-[5%] py-16 md:py-24 lg:py-28">
-      <div className="container">
+    <section className="relative w-full py-16 md:py-24 lg:py-28">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
       </div>
     </section>

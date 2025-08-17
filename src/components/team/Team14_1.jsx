@@ -5,8 +5,8 @@ import { DribbbleLogo, LinkedinLogo, XLogo } from "relume-icons";
 
 export function Team14_1() {
   return (
-    <section className="px-[5%] py-16 md:py-24 lg:py-28" style={{backgroundColor: '#f1f1f1'}}>
-      <div className="container">
+    <section className="w-full py-16 md:py-24 lg:py-28" style={{backgroundColor: '#f1f1f1'}}>
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-12 max-w-lg md:mb-18 lg:mb-20">
           <h2 className="mb-5 text-4xl font-bold md:mb-6 md:text-5xl">Research Leads</h2>
           <p className="text-lg">

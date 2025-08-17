@@ -20,8 +20,8 @@ const useForm = () => {
 export function Footer6() {
   const formState = useForm();
   return (
-    <footer className="px-[5%] py-12 md:py-18 lg:py-20">
-      <div className="container">
+    <footer className="w-full py-12 md:py-18 lg:py-20">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="lg:flex lg:items-start lg:justify-between">
           <div className="mb-6 lg:mb-0">
             <h1 className="text-2xl font-semibold">Subscribe to updates</h1>

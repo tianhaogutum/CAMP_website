@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "CAMP_website",
+			"path": "."
+		},
+		{
+			"name": "public",
+			"path": "../../Desktop/public"
+		}
+	],
+	"settings": {}
+}
