@@ -43,29 +43,29 @@ export function Team14() {
             </div>
           </div>
           <div className="flex flex-col">
-            <ul className="space-y-4 text-lg">
+            <ul className="space-y-4 text-xl">
               <li className="flex items-start">
-                <span className="mr-4 text-blue-600 text-xl">•</span>
+                <span className="mr-4 text-blue-600 text-2xl">•</span>
                 <span>Professor and Chair of Entrepreneurial Finance at the Technical University of Munich (TUM) since 2015.</span>
               </li>
               <li className="flex items-start">
-                <span className="mr-4 text-blue-600 text-xl">•</span>
+                <span className="mr-4 text-blue-600 text-2xl">•</span>
                 <span>Academic Program Director for Master in Management and International Master in Industrial Management at TUM.</span>
               </li>
               <li className="flex items-start">
-                <span className="mr-4 text-blue-600 text-xl">•</span>
+                <span className="mr-4 text-blue-600 text-2xl">•</span>
                 <span>Former Full Professor of Entrepreneurial Finance at Friedrich-Alexander University Erlangen-Nürnberg (2013–2015).</span>
               </li>
               <li className="flex items-start">
-                <span className="mr-4 text-blue-600 text-xl">•</span>
+                <span className="mr-4 text-blue-600 text-2xl">•</span>
                 <span>Visiting scholar at Harvard Business School, University of Oxford, and Manchester Metropolitan University.</span>
               </li>
               <li className="flex items-start">
-                <span className="mr-4 text-blue-600 text-xl">•</span>
+                <span className="mr-4 text-blue-600 text-2xl">•</span>
                 <span>Recipient of the Scientific Award of the German Association for Alternative Investments (2011) and invited as "Global Leader of Tomorrow" at the St. Gallen Symposium (2010).</span>
               </li>
               <li className="flex items-start">
-                <span className="mr-4 text-blue-600 text-xl">•</span>
+                <span className="mr-4 text-blue-600 text-2xl">•</span>
                 <span>Founding Partner of Captona Beteiligungsgesellschaft mbH with long-standing experience in entrepreneurial finance and private equity.</span>
               </li>
             </ul>
