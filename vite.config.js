@@ -32,7 +32,7 @@ export default defineConfig({
     copyPublicDir: true,
     // Increase build timeout
     minify: 'esbuild',
-    target: 'es2015',
+    target: 'es2015' ,
     // Performance optimizations
     reportCompressedSize: false,
     chunkSizeWarningLimit: 3000,

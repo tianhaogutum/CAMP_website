@@ -8,7 +8,7 @@ import { Footer6 } from "./Footer6";
 
 export default function ContactPage() {
   return (
-    <div>
+    <div className="pt-20">
       <Navbar3 />
       <Header65 />
       <Contact16 />

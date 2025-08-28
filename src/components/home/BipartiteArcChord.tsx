@@ -58,10 +58,10 @@ export default function BipartiteArcChord({ left, right, links, leftTitle, right
     const svg = d3.select(ref.current);
     const { width: W, height: H } = (ref.current.parentElement?.getBoundingClientRect() || { width: 1080, height: 1080 });
 
-               const width = Math.max(800, W);
-           const height = width;
-           const innerRadius = Math.min(width, height) * 0.3 - 80;
-           const outerRadius = innerRadius + 8;
+               const width = Math.max(1200, W); // 增加最小宽度到1200
+           const height = width * 0.8; // 增加高度比例到80%
+           const innerRadius = Math.min(width, height) * 0.35 - 60; // 增大半径，减少边距
+           const outerRadius = innerRadius + 12; // 增加弧的厚度
 
     // 转换数据格式为chord diagram需要的格式
     const allNames = [...left, ...right];
@@ -98,30 +98,61 @@ export default function BipartiteArcChord({ left, right, links, leftTitle, right
 
     const colors = d3.quantize(d3.interpolateRainbow, names.length);
 
-               svg.attr("width", width)
-              .attr("height", height)
-              .attr("viewBox", [-width / 2, -height / 2 + 100, width, height])
-              .attr("style", "width: 100%; height: auto; font: 10px sans-serif;");
+                   svg.attr("width", width)
+       .attr("height", height)
+       .attr("viewBox", [-width / 2, -height / 2 - 10, width, height])
+       .attr("style", "width: 100%; height: auto; font: 14px sans-serif;")
+       .style("border", "none")
+       .style("outline", "none");
 
     svg.selectAll("*").remove();
 
-    // 添加标题
-    svg.append("text")
-       .attr("x", -width / 4)
-       .attr("y", -height / 2 + 230)
+    // 添加左侧标题 - Research Methods
+    const leftTitleGroup = svg.append("g")
+       .attr("transform", `translate(${-width / 2.5}, ${-height / 2 + 120})`);
+    
+    // 左侧背景装饰
+    leftTitleGroup.append("rect")
+       .attr("x", -100)
+       .attr("y", -30)
+       .attr("width", 200)
+       .attr("height", 60)
+       .attr("rx", 30)
+       .attr("fill", "rgba(59, 130, 246, 0.1)")
+       .attr("stroke", "#3b82f6")
+       .attr("stroke-width", 2);
+
+    leftTitleGroup.append("text")
+       .attr("x", 0)
+       .attr("y", 6)
        .attr("text-anchor", "middle")
-       .attr("font-size", "18px")
-       .attr("font-weight", "bold")
-       .attr("fill", "#333")
+       .attr("font-size", "20px")
+       .attr("font-weight", "700")
+       .attr("fill", "#1e40af")
        .text(leftTitle);
 
-    svg.append("text")
-       .attr("x", width / 4)
-       .attr("y", -height / 2 + 230)
+    // 添加右侧标题 - Research Topics
+    const rightTitleGroup = svg.append("g")
+       .attr("transform", `translate(${width / 2.5}, ${-height / 2 + 120})`);
+    
+    // 右侧背景装饰
+    rightTitleGroup.append("rect")
+       .attr("x", -100)
+       .attr("y", -30)
+       .attr("width", 200)
+       .attr("height", 60)
+       .attr("rx", 30)
+       .attr("fill", "rgba(236, 72, 153, 0.1)")
+       .attr("stroke", "#ec4899")
+       .attr("stroke-width", 2);
+
+    rightTitleGroup.append("text")
+       .attr("x", 0)
+       .attr("y", 6)
        .attr("text-anchor", "middle")
-       .attr("font-size", "18px")
-       .attr("font-weight", "bold")
-       .attr("fill", "#333")
+       .attr("font-size", "20px")
+       .attr("font-weight", "700")
+       .attr("fill", "#be185d")
        .text(rightTitle);
 
     const chords = chord(matrix);
@@ -132,7 +163,11 @@ export default function BipartiteArcChord({ left, right, links, leftTitle, right
       .join("g");
 
     group.append("path")
-        .attr("fill", d => colors[d.index])
+        .attr("fill", d => {
+          // 将指定项目对应的块颜色设为白色（背景色）
+          const hiddenItems = ["Wealth & Income Inequality", "Adaptive Behavior", "Image Processing", "Game Theory"];
+          return hiddenItems.includes(names[d.index]) ? "#ffffff" : colors[d.index];
+        })
         .attr("d", d => arc({
           startAngle: d.startAngle,
           endAngle: d.endAngle,
@@ -147,7 +182,7 @@ export default function BipartiteArcChord({ left, right, links, leftTitle, right
           const midAngle = angle / 2;
           return `
             rotate(${(midAngle * 180 / Math.PI - 90)})
-            translate(${outerRadius + 5})
+            translate(${outerRadius + 10})
             ${midAngle > Math.PI ? "rotate(180)" : ""}
           `;
         })
@@ -156,6 +191,13 @@ export default function BipartiteArcChord({ left, right, links, leftTitle, right
           const midAngle = angle / 2;
           return midAngle > Math.PI ? "end" : null;
         })
+        .attr("fill", d => {
+          // 将指定项目的文本颜色设为白色（背景色）
+          const hiddenItems = ["Wealth & Income Inequality", "Adaptive Behavior", "Image Processing", "Game Theory"];
+          return hiddenItems.includes(names[d.index]) ? "#ffffff" : "#333";
+        })
+        .attr("font-size", "14px")
+        .attr("font-weight", "500")
         .text(d => names[d.index]);
 
     group.append("title")
@@ -179,7 +221,11 @@ ${d3.sum(chords, c => {
         .data(chords)
         .join("path")
           .style("mix-blend-mode", "multiply")
-          .attr("fill", d => colors[d.target.index])
+          .attr("fill", d => {
+            // 将指定项目相关的连接线颜色设为白色（背景色）
+            const hiddenItems = ["Wealth & Income Inequality", "Adaptive Behavior", "Image Processing", "Game Theory"];
+            return (hiddenItems.includes(names[d.target.index]) || hiddenItems.includes(names[d.source.index])) ? "#ffffff" : colors[d.target.index];
+          })
           .attr("d", d => {
             const path = ribbon({
               source: {
@@ -205,7 +251,7 @@ ${d3.sum(chords, c => {
   }, [left, right, links, leftTitle, rightTitle]);
 
   return (
-    <div className={"w-full h-[900px] bg-white " + (className || "")}>
+    <div className={"w-full h-[750px] bg-white border-0 outline-none shadow-none " + (className || "")}>
       <svg ref={ref} role="img" aria-label={`${leftTitle} to ${rightTitle} chord diagram`}></svg>
       <div className="sr-only">Interactive chord diagram showing connections between {leftTitle} and {rightTitle}.</div>
     </div>

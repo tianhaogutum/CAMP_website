@@ -34,8 +34,22 @@ const useRelume = () => {
 
 export function Navbar3() {
   const useActive = useRelume();
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      setIsScrolled(scrollTop > 10);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <section className="z-[999] grid w-full grid-cols-[1fr_max-content_1fr] items-center justify-between border-b border-border-primary bg-background-primary px-[5%] md:min-h-18">
+    <section className={`fixed top-0 left-0 right-0 z-[999] grid w-full grid-cols-[1fr_max-content_1fr] items-center justify-between bg-background-primary px-[5%] md:min-h-18 transition-all duration-300 ${
+      isScrolled ? 'shadow-lg bg-white' : 'bg-background-primary'
+    }`}>
       <button
         className="flex size-12 flex-col justify-center lg:hidden"
         onClick={useActive.toggleMobileMenu}

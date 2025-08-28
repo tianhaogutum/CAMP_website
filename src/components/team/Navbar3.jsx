@@ -34,8 +34,22 @@ const useRelume = () => {
 
 export function Navbar3() {
   const useActive = useRelume();
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      setIsScrolled(scrollTop > 10);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <section className="z-[999] grid w-full grid-cols-[1fr_max-content_1fr] items-center justify-between border-b border-border-primary bg-background-primary px-[5%] md:min-h-18">
+    <section className={`fixed top-0 left-0 right-0 z-[999] grid w-full grid-cols-[1fr_max-content_1fr] items-center justify-between bg-background-primary px-[5%] md:min-h-18 transition-all duration-300 ${
+      isScrolled ? 'shadow-lg bg-white' : 'bg-background-primary'
+    }`}>
       <button
         className="flex size-12 flex-col justify-center lg:hidden"
         onClick={useActive.toggleMobileMenu}
@@ -51,12 +65,9 @@ export function Navbar3() {
           useActive.isMobileMenuOpen ? 'block' : 'hidden'
         } absolute top-0 left-0 z-50 flex h-dvh w-[90%] flex-col border-r border-border-primary bg-background-primary px-[5%] pb-4 md:w-[80%] lg:visible lg:static lg:-ml-4 lg:flex lg:h-auto lg:w-auto lg:flex-row lg:border-none lg:px-0 lg:pb-0`}
       >
-        <a href="#" className="mt-10 mb-8 flex shrink-0 lg:hidden">
-          <img
-            src="https://d22po4pjz3o32e.cloudfront.net/logo-image.svg"
-            alt="Logo image"
-          />
-        </a>
+        <Link to="/" className="mt-10 mb-8 flex shrink-0 lg:hidden">
+          <span className="text-xl font-bold text-text-primary">CEFS</span>
+        </Link>
         <Link
           to="/"
           className="text-base relative block py-3 lg:px-4 lg:py-2"

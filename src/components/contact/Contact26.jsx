@@ -23,7 +23,7 @@ export function Contact26() {
               />
             </div>
             <h3 className="mb-3 text-2xl font-bold md:mb-4 mb-3 font-bold lg:mb-4">TUM School of Management</h3>
-            <p className="text-center">Arcisstraße 21<br />D-80333 München</p>
+            <p className="text-center">Arcisstraße 21<br />80333 München</p>
           </div>
           <div className="flex flex-col items-center justify-start text-center">
             <div className="mb-6 aspect-[3/2] md:mb-8">
