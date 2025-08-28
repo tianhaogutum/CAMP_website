@@ -9,7 +9,10 @@ export function Header65() {
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
 
         <h1 className="mb-5 text-5xl font-bold text-white md:mb-6 md:text-6xl lg:text-7xl">
-          Get in Touch
+          Get in 
+          <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400 bg-clip-text text-transparent animate-pulse">
+            Touch
+          </span>
         </h1>
         <p className="text-lg text-white">
           We’re here to answer your questions and collaborate on innovative

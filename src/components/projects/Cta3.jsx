@@ -6,8 +6,8 @@ import React from "react";
 export function Cta3() {
   return (
     <section className="relative w-full py-16 md:py-24 lg:py-28">
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto w-full max-w-lg text-center">
+      <div className="relative z-10 w-full max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto w-full text-center">
           <h2 className="mb-5 text-4xl font-bold text-white md:mb-6 md:text-5xl">
             Let's Collaborate on Research
           </h2>

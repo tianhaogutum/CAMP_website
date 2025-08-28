@@ -6,7 +6,7 @@ import { DribbbleLogo, LinkedinLogo, XLogo } from "relume-icons";
 
 export function Team6() {
   return (
-    <section className="w-full py-16 md:py-24 lg:py-28">
+    <section className="w-full pt-16 md:pt-24 lg:pt-28">
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-12 max-w-lg md:mb-18 lg:mb-20">
           <h2 className="mb-5 text-4xl font-bold md:mb-6 md:text-5xl">
