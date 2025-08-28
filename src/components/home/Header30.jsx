@@ -9,7 +9,7 @@ export function Header30() {
           <div className="w-full max-w-5xl">
             <h1 className="mb-6 text-4xl font-display font-bold text-white leading-tight tracking-tight md:mb-8 md:text-6xl lg:text-7xl">
               Shaping the Future of
-              <span className="block bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400 bg-clip-text text-transparent animate-pulse">
+              <span className="block bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400 bg-clip-text text-transparent animate-pulse text-5xl md:text-6xl lg:text-7xl">
                 Private Markets
               </span>
               with AI & Advanced Analytics

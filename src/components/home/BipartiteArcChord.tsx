@@ -59,7 +59,7 @@ export default function BipartiteArcChord({ left, right, links, leftTitle, right
     const { width: W, height: H } = (ref.current.parentElement?.getBoundingClientRect() || { width: 1080, height: 1080 });
 
                const width = Math.max(1200, W); // 增加最小宽度到1200
-           const height = width * 0.8; // 增加高度比例到80%
+           const height = width * 0.78; // 略微减小高度以整体上移
            const innerRadius = Math.min(width, height) * 0.35 - 60; // 增大半径，减少边距
            const outerRadius = innerRadius + 12; // 增加弧的厚度
 
@@ -100,8 +100,8 @@ export default function BipartiteArcChord({ left, right, links, leftTitle, right
 
                    svg.attr("width", width)
        .attr("height", height)
-       .attr("viewBox", [-width / 2, -height / 2 - 10, width, height])
-       .attr("style", "width: 100%; height: auto; font: 14px sans-serif;")
+       .attr("viewBox", [-width / 2, -height / 2 - 30, width, height])
+       .attr("style", "width: 100%; height: auto; font: 16px 'Inter', 'SF Pro Display', 'Segoe UI', system-ui, sans-serif;")
        .style("border", "none")
        .style("outline", "none");
 
@@ -109,7 +109,7 @@ export default function BipartiteArcChord({ left, right, links, leftTitle, right
 
     // 添加左侧标题 - Research Methods
     const leftTitleGroup = svg.append("g")
-       .attr("transform", `translate(${-width / 2.5}, ${-height / 2 + 120})`);
+       .attr("transform", `translate(${-width / 2.5}, ${-height / 2 + 100})`);
     
     // 左侧背景装饰
     leftTitleGroup.append("rect")
@@ -126,14 +126,16 @@ export default function BipartiteArcChord({ left, right, links, leftTitle, right
        .attr("x", 0)
        .attr("y", 6)
        .attr("text-anchor", "middle")
-       .attr("font-size", "20px")
-       .attr("font-weight", "700")
+       .attr("font-size", "22px")
+       .attr("font-weight", "800")
+       .attr("font-family", "'Inter', 'SF Pro Display', 'Segoe UI', system-ui, sans-serif")
        .attr("fill", "#1e40af")
+       .attr("filter", "drop-shadow(0 1px 2px rgba(0,0,0,0.1))")
        .text(leftTitle);
 
     // 添加右侧标题 - Research Topics
     const rightTitleGroup = svg.append("g")
-       .attr("transform", `translate(${width / 2.5}, ${-height / 2 + 120})`);
+       .attr("transform", `translate(${width / 2.5}, ${-height / 2 + 100})`);
     
     // 右侧背景装饰
     rightTitleGroup.append("rect")
@@ -150,14 +152,31 @@ export default function BipartiteArcChord({ left, right, links, leftTitle, right
        .attr("x", 0)
        .attr("y", 6)
        .attr("text-anchor", "middle")
-       .attr("font-size", "20px")
-       .attr("font-weight", "700")
+       .attr("font-size", "22px")
+       .attr("font-weight", "800")
+       .attr("font-family", "'Inter', 'SF Pro Display', 'Segoe UI', system-ui, sans-serif")
        .attr("fill", "#be185d")
+       .attr("filter", "drop-shadow(0 1px 2px rgba(0,0,0,0.1))")
        .text(rightTitle);
 
-    const chords = chord(matrix);
+    // 压缩Y轴比例，使图形呈椭圆形
+    const chartGroup = svg.append("g")
+      .attr("transform", `scale(1, 0.75)`);
 
-    const group = svg.append("g")
+    const chords = chord(matrix);
+    
+    // 预计算相邻关系，便于快速高亮相关弧线
+    const connectivity = new Map<number, Set<number>>();
+    for (const c of chords) {
+      const s = Number(c.source.index);
+      const t = Number(c.target.index);
+      if (!connectivity.has(s)) connectivity.set(s, new Set<number>());
+      if (!connectivity.has(t)) connectivity.set(t, new Set<number>());
+      connectivity.get(s)!.add(t);
+      connectivity.get(t)!.add(s);
+    }
+
+    const group = chartGroup.append("g")
       .selectAll("g")
       .data(chords.groups)
       .join("g");
@@ -173,7 +192,8 @@ export default function BipartiteArcChord({ left, right, links, leftTitle, right
           endAngle: d.endAngle,
           innerRadius: innerRadius,
           outerRadius: outerRadius
-        }));
+        }))
+        .style("cursor", "pointer");
 
     group.append("text")
         .attr("dy", "0.35em")
@@ -196,9 +216,12 @@ export default function BipartiteArcChord({ left, right, links, leftTitle, right
           const hiddenItems = ["Wealth & Income Inequality", "Adaptive Behavior", "Image Processing", "Game Theory"];
           return hiddenItems.includes(names[d.index]) ? "#ffffff" : "#333";
         })
-        .attr("font-size", "14px")
-        .attr("font-weight", "500")
-        .text(d => names[d.index]);
+        .attr("font-size", "17px")
+        .attr("font-weight", "600")
+        .attr("font-family", "'Inter', 'SF Pro Display', 'Segoe UI', system-ui, sans-serif")
+        .attr("filter", "drop-shadow(0 1px 1px rgba(0,0,0,0.08))")
+        .text(d => names[d.index])
+        .style("cursor", "pointer");
 
     group.append("title")
         .text(d => `${names[d.index]}
@@ -215,7 +238,7 @@ ${d3.sum(chords, c => {
   return sourceIndex === targetIndex ? value : 0;
 })} incoming ←`);
 
-    svg.append("g")
+    const ribbonSel = chartGroup.append("g")
         .attr("fill-opacity", 0.75)
       .selectAll("path")
         .data(chords)
@@ -240,9 +263,36 @@ ${d3.sum(chords, c => {
               }
             }) as unknown as string;
             return path;
-          })
-        .append("title")
-          .text(d => `${names[d.source.index]} → ${names[d.target.index]} ${Number(d.source.value) || 0}`);
+          });
+
+    ribbonSel.append("title")
+      .text(d => `${names[d.source.index]} → ${names[d.target.index]} ${Number(d.source.value) || 0}`);
+
+    // 悬停交互：只显示与目标分组相关的弧和连带
+    const highlightByIndex = (i: number) => {
+      // 所有关联的分组
+      const connected = new Set<number>([i]);
+      const setI = connectivity.get(i);
+      if (setI) {
+        for (const v of setI) connected.add(v);
+      }
+
+      // 组块与标签
+      group.selectAll("path").style("opacity", (d: any) => connected.has(Number(d.index)) ? 1 : 0);
+      group.selectAll("text").style("opacity", (d: any) => connected.has(Number(d.index)) ? 1 : 0.15);
+
+      // 连带
+      ribbonSel.style("opacity", (d: any) => (Number(d.source.index) === i || Number(d.target.index) === i) ? 0.9 : 0);
+    };
+
+    const resetHighlight = () => {
+      group.selectAll("path").style("opacity", 1);
+      group.selectAll("text").style("opacity", 1);
+      ribbonSel.style("opacity", 1);
+    };
+
+    group.on("mouseover", (_event: any, d: any) => highlightByIndex(Number(d.index)))
+         .on("mouseout", resetHighlight);
 
     // Cleanup function
     return () => {

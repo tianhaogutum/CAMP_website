@@ -10,7 +10,7 @@ export function Header69() {
           <div className="w-full max-w-5xl">
           <h1 className="mb-8 text-5xl font-display font-bold text-white leading-tight tracking-tight md:mb-10 md:text-6xl lg:text-7xl">
             Our Research
-            <span className="block bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400 bg-clip-text text-transparent animate-pulse">
+            <span className="block bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400 bg-clip-text text-transparent animate-pulse text-6xl md:text-7xl lg:text-8xl">
               Projects
             </span>
           </h1>

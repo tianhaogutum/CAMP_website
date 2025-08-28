@@ -19,15 +19,15 @@ export default function HomePage() {
       {/* Research Methods & Topics Visualization */}
       <section className="py-20 md:py-28 lg:py-32 bg-white">
         <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-2">
               Research Methods & Topics
             </h2>
             <p className="text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed">
               Discover the interconnected relationships between our research methodologies and the diverse topics we investigate in private equity research.
             </p>
           </div>
-          <div className="bg-white p-8">
+          <div className="bg-white pt-2 pb-8 px-4">
             <BipartiteArcChord 
               leftTitle="Research Methods"
               rightTitle="Research Topics"
