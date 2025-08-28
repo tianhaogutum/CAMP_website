@@ -26,7 +26,7 @@ export function Header30() {
           autoPlay
           muted
           loop
-          playsInline
+          playsInline preload="metadata" aria-label="Background video showing AI and analytics visualization"
           className="w-full h-full object-cover object-center"
           onError={(e) => console.error('Video error:', e)}
           onLoadStart={() => console.log('Video loading started')}

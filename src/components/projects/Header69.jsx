@@ -39,7 +39,7 @@ export function Header69() {
           autoPlay
           muted
           loop
-          playsInline
+          playsInline preload="metadata" aria-label="Background video of research visuals"
           className="w-full h-full object-cover object-center"
         >
           <source src="/images/research.mp4" type="video/mp4" />
