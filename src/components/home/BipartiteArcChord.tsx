@@ -364,7 +364,7 @@ ${d3.sum(chords, c => {
   }, [computed, containerSize, leftTitle, rightTitle]);
 
   return (
-    <div ref={wrapperRef} className={"w-full h-[780px] bg-[#f1f1f1] border-0 outline-none shadow-none " + (className || "")}>
+    <div ref={wrapperRef} className={"w-full h-[520px] sm:h-[600px] md:h-[720px] lg:h-[780px] bg-[#f1f1f1] border-0 outline-none shadow-none " + (className || "")}>
       <svg ref={ref} role="img" aria-label={`${leftTitle} to ${rightTitle} chord diagram`}></svg>
       <div className="sr-only">Interactive chord diagram showing connections between {leftTitle} and {rightTitle}.</div>
     </div>
