@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import * as d3 from "d3";
 
 interface BipartiteArcChordProps {
@@ -51,112 +51,124 @@ export const demoData = {
 
 export default function BipartiteArcChord({ left, right, links, leftTitle, rightTitle, className }: BipartiteArcChordProps) {
   const ref = useRef<SVGSVGElement>(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const [containerSize, setContainerSize] = useState<{ width: number; height: number } | null>(null);
+
+  // 仅在数据变更时重建矩阵，避免无关渲染
+  const computed = useMemo(() => {
+    const data = links.map(([i, j]) => ({ source: left[i], target: right[j], value: 1 }));
+    const names = d3.sort(d3.union(data.map(d => d.source), data.map(d => d.target)));
+    const index = new Map(names.map((name, i) => [name, i] as const));
+    const matrix = Array.from(index, () => new Array<number>(names.length).fill(0));
+    for (const { source, target, value } of data) {
+      const si = index.get(source);
+      const ti = index.get(target);
+      if (si !== undefined && ti !== undefined) matrix[si][ti] += value;
+    }
+    return { names, matrix };
+  }, [left, right, links]);
+
+  // 观察容器尺寸变化，触发重绘（节流至 rAF）
+  useEffect(() => {
+    if (!wrapperRef.current) return;
+    const elem = wrapperRef.current;
+    let frame: number | null = null;
+    const ro = new ResizeObserver(() => {
+      if (frame !== null) return;
+      frame = requestAnimationFrame(() => {
+        frame = null;
+        const rect = elem.getBoundingClientRect();
+        setContainerSize({ width: rect.width, height: rect.height });
+      });
+    });
+    ro.observe(elem);
+    // 初始化尺寸
+    const rect = elem.getBoundingClientRect();
+    setContainerSize({ width: rect.width, height: rect.height });
+    return () => {
+      ro.disconnect();
+      if (frame !== null) cancelAnimationFrame(frame);
+    };
+  }, []);
 
   useEffect(() => {
-    if (!ref.current) return;
+    if (!ref.current || !containerSize) return;
 
     const svg = d3.select(ref.current);
-    const { width: W, height: H } = (ref.current.parentElement?.getBoundingClientRect() || { width: 1080, height: 1080 });
+    const W = containerSize.width || 1080;
+    const width = Math.max(1200, W);
+    const height = width * 0.78;
+    const innerRadius = Math.min(width, height) * 0.35 - 60;
+    const outerRadius = innerRadius + 12;
 
-               const width = Math.max(1200, W); // 增加最小宽度到1200
-           const height = width * 0.78; // 略微减小高度以整体上移
-           const innerRadius = Math.min(width, height) * 0.35 - 60; // 增大半径，减少边距
-           const outerRadius = innerRadius + 12; // 增加弧的厚度
-
-    // 转换数据格式为chord diagram需要的格式
-    const allNames = [...left, ...right];
-    const data = links.map(([i, j]) => ({
-      source: left[i],
-      target: right[j],
-      value: 1
-    }));
-
-    // Compute a dense matrix from the weighted links in data.
-    const names = d3.sort(d3.union(data.map(d => d.source), data.map(d => d.target)));
-    const index = new Map(names.map((name, i) => [name, i]));
-    const matrix = Array.from(index, () => new Array(names.length).fill(0));
-    for (const {source, target, value} of data) {
-      const sourceIndex = index.get(source);
-      const targetIndex = index.get(target);
-      if (sourceIndex !== undefined && targetIndex !== undefined) {
-        matrix[sourceIndex][targetIndex] += value;
-      }
-    }
+    const names = computed.names;
+    const matrix = computed.matrix;
 
     const chord = d3.chordDirected()
-        .padAngle(10 / innerRadius)
-        .sortSubgroups(d3.descending)
-        .sortChords(d3.descending);
+      .padAngle(10 / innerRadius)
+      .sortSubgroups(d3.descending)
+      .sortChords(d3.descending);
 
     const arc = d3.arc()
-        .innerRadius(innerRadius)
-        .outerRadius(outerRadius);
+      .innerRadius(innerRadius)
+      .outerRadius(outerRadius);
 
     const ribbon = d3.ribbon()
-        .radius(innerRadius - 1)
-        .padAngle(1 / innerRadius);
+      .radius(innerRadius - 1)
+      .padAngle(1 / innerRadius);
 
     const colors = d3.quantize(d3.interpolateRainbow, names.length);
 
-                   svg.attr("width", width)
-       .attr("height", height)
-       .attr("viewBox", [-width / 2, -height / 2 - 30, width, height])
-       .attr("style", "width: 100%; height: auto; font: 16px 'Inter', 'SF Pro Display', 'Segoe UI', system-ui, sans-serif;")
-       .style("border", "none")
-       .style("outline", "none");
+    svg.attr("width", width)
+      .attr("height", height)
+      .attr("viewBox", [-width / 2, -height / 2 - 30, width, height])
+      .attr("style", "width: 100%; height: auto; font: 16px 'Inter', 'SF Pro Display', 'Segoe UI', system-ui, sans-serif;")
+      .style("border", "none")
+      .style("outline", "none");
 
     svg.selectAll("*").remove();
 
-    // 添加左侧标题 - Research Methods
+    // 添加左侧标题 - Research Methods（极简设计：彩色圆点 + 文本，无背景框）
     const leftTitleGroup = svg.append("g")
        .attr("transform", `translate(${-width / 2.5}, ${-height / 2 + 100})`);
     
-    // 左侧背景装饰
-    leftTitleGroup.append("rect")
-       .attr("x", -100)
-       .attr("y", -30)
-       .attr("width", 200)
-       .attr("height", 60)
-       .attr("rx", 30)
-       .attr("fill", "rgba(59, 130, 246, 0.1)")
-       .attr("stroke", "#3b82f6")
-       .attr("stroke-width", 2);
+    leftTitleGroup.append("circle")
+       .attr("cx", -12)
+       .attr("cy", 4)
+       .attr("r", 6)
+       .attr("fill", "#3b82f6");
 
     leftTitleGroup.append("text")
-       .attr("x", 0)
+       .attr("x", 6)
        .attr("y", 6)
-       .attr("text-anchor", "middle")
-       .attr("font-size", "22px")
-       .attr("font-weight", "800")
+       .attr("text-anchor", "start")
+       .attr("font-size", "20px")
+       .attr("font-weight", "700")
+       .attr("letter-spacing", "0.3px")
        .attr("font-family", "'Inter', 'SF Pro Display', 'Segoe UI', system-ui, sans-serif")
-       .attr("fill", "#1e40af")
-       .attr("filter", "drop-shadow(0 1px 2px rgba(0,0,0,0.1))")
+       .attr("fill", "#111827")
        .text(leftTitle);
 
-    // 添加右侧标题 - Research Topics
+    // 添加右侧标题 - Research Topics（极简设计：彩色圆点 + 文本，无背景框）
+    const rightTitleX = width / 2.5 - 100; // 向左移动 100px
     const rightTitleGroup = svg.append("g")
-       .attr("transform", `translate(${width / 2.5}, ${-height / 2 + 100})`);
+       .attr("transform", `translate(${rightTitleX}, ${-height / 2 + 100})`);
     
-    // 右侧背景装饰
-    rightTitleGroup.append("rect")
-       .attr("x", -100)
-       .attr("y", -30)
-       .attr("width", 200)
-       .attr("height", 60)
-       .attr("rx", 30)
-       .attr("fill", "rgba(236, 72, 153, 0.1)")
-       .attr("stroke", "#ec4899")
-       .attr("stroke-width", 2);
+    rightTitleGroup.append("circle")
+       .attr("cx", -12)
+       .attr("cy", 4)
+       .attr("r", 6)
+       .attr("fill", "#ec4899");
 
     rightTitleGroup.append("text")
-       .attr("x", 0)
+       .attr("x", 6)
        .attr("y", 6)
-       .attr("text-anchor", "middle")
-       .attr("font-size", "22px")
-       .attr("font-weight", "800")
+       .attr("text-anchor", "start")
+       .attr("font-size", "20px")
+       .attr("font-weight", "700")
+       .attr("letter-spacing", "0.3px")
        .attr("font-family", "'Inter', 'SF Pro Display', 'Segoe UI', system-ui, sans-serif")
-       .attr("fill", "#be185d")
-       .attr("filter", "drop-shadow(0 1px 2px rgba(0,0,0,0.1))")
+       .attr("fill", "#111827")
        .text(rightTitle);
 
     // 压缩Y轴比例，使图形呈椭圆形
@@ -164,6 +176,12 @@ export default function BipartiteArcChord({ left, right, links, leftTitle, right
       .attr("transform", `scale(1, 0.75)`);
 
     const chords = chord(matrix);
+    const hiddenItems = [
+      "Wealth & Income Inequality",
+      "Adaptive Behavior",
+      "Image Processing",
+      "Game Theory"
+    ];
     
     // 预计算相邻关系，便于快速高亮相关弧线
     const connectivity = new Map<number, Set<number>>();
@@ -181,10 +199,12 @@ export default function BipartiteArcChord({ left, right, links, leftTitle, right
       .data(chords.groups)
       .join("g");
 
+    // 让隐藏项不响应鼠标事件
+    group.style("pointer-events", (d: any) => hiddenItems.includes(names[d.index]) ? "none" : "auto");
+
     group.append("path")
         .attr("fill", d => {
           // 将指定项目对应的块颜色设为白色（背景色）
-          const hiddenItems = ["Wealth & Income Inequality", "Adaptive Behavior", "Image Processing", "Game Theory"];
           return hiddenItems.includes(names[d.index]) ? "#ffffff" : colors[d.index];
         })
         .attr("d", d => arc({
@@ -193,6 +213,7 @@ export default function BipartiteArcChord({ left, right, links, leftTitle, right
           innerRadius: innerRadius,
           outerRadius: outerRadius
         }))
+        .style("opacity", d => hiddenItems.includes(names[d.index]) ? 0 : 1)
         .style("cursor", "pointer");
 
     group.append("text")
@@ -213,14 +234,14 @@ export default function BipartiteArcChord({ left, right, links, leftTitle, right
         })
         .attr("fill", d => {
           // 将指定项目的文本颜色设为白色（背景色）
-          const hiddenItems = ["Wealth & Income Inequality", "Adaptive Behavior", "Image Processing", "Game Theory"];
           return hiddenItems.includes(names[d.index]) ? "#ffffff" : "#333";
         })
         .attr("font-size", "17px")
         .attr("font-weight", "600")
         .attr("font-family", "'Inter', 'SF Pro Display', 'Segoe UI', system-ui, sans-serif")
-        .attr("filter", "drop-shadow(0 1px 1px rgba(0,0,0,0.08))")
+        .attr("filter", (d: any) => hiddenItems.includes(names[d.index]) ? null : "drop-shadow(0 1px 1px rgba(0,0,0,0.08))")
         .text(d => names[d.index])
+        .style("opacity", d => hiddenItems.includes(names[d.index]) ? 0 : 1)
         .style("cursor", "pointer");
 
     group.append("title")
@@ -246,9 +267,9 @@ ${d3.sum(chords, c => {
           .style("mix-blend-mode", "multiply")
           .attr("fill", d => {
             // 将指定项目相关的连接线颜色设为白色（背景色）
-            const hiddenItems = ["Wealth & Income Inequality", "Adaptive Behavior", "Image Processing", "Game Theory"];
             return (hiddenItems.includes(names[d.target.index]) || hiddenItems.includes(names[d.source.index])) ? "#ffffff" : colors[d.target.index];
           })
+          .style("opacity", d => (hiddenItems.includes(names[d.target.index]) || hiddenItems.includes(names[d.source.index])) ? 0 : 1)
           .attr("d", d => {
             const path = ribbon({
               source: {
@@ -270,6 +291,7 @@ ${d3.sum(chords, c => {
 
     // 悬停交互：只显示与目标分组相关的弧和连带
     const highlightByIndex = (i: number) => {
+      if (hiddenItems.includes(names[i])) return;
       // 所有关联的分组
       const connected = new Set<number>([i]);
       const setI = connectivity.get(i);
@@ -278,17 +300,21 @@ ${d3.sum(chords, c => {
       }
 
       // 组块与标签
-      group.selectAll("path").style("opacity", (d: any) => connected.has(Number(d.index)) ? 1 : 0);
-      group.selectAll("text").style("opacity", (d: any) => connected.has(Number(d.index)) ? 1 : 0.15);
+      group.selectAll("path").style("opacity", (d: any) => hiddenItems.includes(names[d.index]) ? 0 : (connected.has(Number(d.index)) ? 1 : 0));
+      group.selectAll("text").style("opacity", (d: any) => hiddenItems.includes(names[d.index]) ? 0 : (connected.has(Number(d.index)) ? 1 : 0.15));
 
       // 连带
-      ribbonSel.style("opacity", (d: any) => (Number(d.source.index) === i || Number(d.target.index) === i) ? 0.9 : 0);
+      ribbonSel.style("opacity", (d: any) => {
+        const hide = hiddenItems.includes(names[d.source.index]) || hiddenItems.includes(names[d.target.index]);
+        if (hide) return 0;
+        return (Number(d.source.index) === i || Number(d.target.index) === i) ? 0.9 : 0;
+      });
     };
 
     const resetHighlight = () => {
-      group.selectAll("path").style("opacity", 1);
-      group.selectAll("text").style("opacity", 1);
-      ribbonSel.style("opacity", 1);
+      group.selectAll("path").style("opacity", (d: any) => hiddenItems.includes(names[d.index]) ? 0 : 1);
+      group.selectAll("text").style("opacity", (d: any) => hiddenItems.includes(names[d.index]) ? 0 : 1);
+      ribbonSel.style("opacity", (d: any) => (hiddenItems.includes(names[d.source.index]) || hiddenItems.includes(names[d.target.index])) ? 0 : 1);
     };
 
     group.on("mouseover", (_event: any, d: any) => highlightByIndex(Number(d.index)))
@@ -298,10 +324,10 @@ ${d3.sum(chords, c => {
     return () => {
       svg.selectAll("*").remove();
     };
-  }, [left, right, links, leftTitle, rightTitle]);
+  }, [computed, containerSize, leftTitle, rightTitle]);
 
   return (
-    <div className={"w-full h-[750px] bg-white border-0 outline-none shadow-none " + (className || "")}>
+    <div ref={wrapperRef} className={"w-full h-[750px] bg-white border-0 outline-none shadow-none " + (className || "")}>
       <svg ref={ref} role="img" aria-label={`${leftTitle} to ${rightTitle} chord diagram`}></svg>
       <div className="sr-only">Interactive chord diagram showing connections between {leftTitle} and {rightTitle}.</div>
     </div>

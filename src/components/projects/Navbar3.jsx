@@ -47,12 +47,21 @@ export function Navbar3() {
   }, []);
 
   return (
-    <section className={`fixed top-0 left-0 right-0 z-[999] grid w-full grid-cols-[1fr_max-content_1fr] items-center justify-between bg-background-primary px-[5%] md:min-h-18 transition-all duration-300 ${
+    <nav aria-label="Primary" className={`fixed top-0 left-0 right-0 z-[999] grid w-full grid-cols-[1fr_max-content_1fr] items-center justify-between bg-background-primary px-[5%] md:min-h-18 transition-all duration-300 ${
       isScrolled ? 'shadow-lg bg-white' : 'bg-background-primary'
     }`}>
+      <a
+        href="#main-content"
+        className="sr-only focus:fixed focus:z-[1000] focus:top-2 focus:left-2 focus:not-sr-only focus:px-3 focus:py-2 focus:bg-white focus:text-black focus:rounded focus:shadow"
+      >
+        跳到主要内容
+      </a>
       <button
         className="flex size-12 flex-col justify-center lg:hidden"
         onClick={useActive.toggleMobileMenu}
+        aria-label="Toggle navigation"
+        aria-expanded={useActive.isMobileMenuOpen}
+        aria-controls="primary-navigation"
       >
         <span className="my-[3px] h-0.5 w-6 bg-neutral-darkest lg:hidden" />
         <span className="my-[3px] h-0.5 w-6 bg-neutral-darkest lg:hidden" />
@@ -61,6 +70,7 @@ export function Navbar3() {
       
       {/* Simplified mobile menu without animations */}
       <div
+        id="primary-navigation"
         className={`${
           useActive.isMobileMenuOpen ? 'block' : 'hidden'
         } absolute top-0 left-0 z-50 flex h-dvh w-[90%] flex-col border-r border-border-primary bg-background-primary px-[5%] pb-4 md:w-[80%] lg:visible lg:static lg:-ml-4 lg:flex lg:h-auto lg:w-auto lg:flex-row lg:border-none lg:px-0 lg:pb-0`}
@@ -69,24 +79,28 @@ export function Navbar3() {
         <Link
           to="/"
           className="text-base relative block py-3 lg:px-4 lg:py-2"
+          aria-current={location.pathname === '/' ? 'page' : undefined}
         >
           Home
         </Link>
         <Link
           to="/projects"
           className="text-base relative block py-3 lg:px-4 lg:py-2"
+          aria-current={location.pathname.startsWith('/projects') ? 'page' : undefined}
         >
           Our Projects
         </Link>
         <Link
           to="/team"
           className="text-base relative block py-3 lg:px-4 lg:py-2"
+          aria-current={location.pathname.startsWith('/team') ? 'page' : undefined}
         >
           Our Team
         </Link>
         <Link
           to="/contact"
           className="text-base relative block py-3 lg:px-4 lg:py-2"
+          aria-current={location.pathname.startsWith('/contact') ? 'page' : undefined}
         >
           Contact Us
         </Link>
@@ -111,7 +125,7 @@ export function Navbar3() {
           <Button
             title="Join us"
             size="sm"
-            className="px-4 py-1 md:px-6 md:py-2"
+            className="px-5 py-2 md:px-6 md:py-2 rounded-full bg-blue-600 text-white font-semibold shadow-sm hover:bg-blue-700 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all"
             onClick={useActive.toggleJoinUs}
           >
             Join us
@@ -142,6 +156,6 @@ export function Navbar3() {
           )}
         </div>
       </div>
-    </section>
+    </nav>
   );
 }

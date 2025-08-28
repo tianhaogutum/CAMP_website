@@ -33,7 +33,7 @@ export function Header65() {
           <source src="/images/contact.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
-        <div className="absolute inset-0 bg-neutral-darkest/50" />
+        <div className="absolute inset-0 bg-neutral-darkest/5i0" />
       </div>
     </section>
   );
