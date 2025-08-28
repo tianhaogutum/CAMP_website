@@ -18,7 +18,7 @@ export function SFDR() {
         {/* Content */}
         <div className="space-y-8">
           {/* Introduction */}
-          <section className="bg-gray-50 p-8 rounded-lg">
+          <section className="bg-[#f1f1f1] p-8 rounded-lg">
             <h2 className="text-2xl font-semibold mb-4">What is SFDR?</h2>
             <div className="space-y-4 text-gray-700">
               <p>
@@ -35,7 +35,7 @@ export function SFDR() {
           </section>
 
           {/* Sustainability Risk Integration */}
-          <section className="bg-gray-50 p-8 rounded-lg">
+          <section className="bg-[#f1f1f1] p-8 rounded-lg">
             <h2 className="text-2xl font-semibold mb-4">Sustainability Risk Integration</h2>
             <div className="space-y-4 text-gray-700">
               <p>
@@ -53,7 +53,7 @@ export function SFDR() {
           </section>
 
           {/* Principal Adverse Impacts */}
-          <section className="bg-gray-50 p-8 rounded-lg">
+          <section className="bg-[#f1f1f1] p-8 rounded-lg">
             <h2 className="text-2xl font-semibold mb-4">Principal Adverse Impacts</h2>
             <div className="space-y-4 text-gray-700">
               <p>
@@ -84,7 +84,7 @@ export function SFDR() {
           </section>
 
           {/* Investment Products */}
-          <section className="bg-gray-50 p-8 rounded-lg">
+          <section className="bg-[#f1f1f1] p-8 rounded-lg">
             <h2 className="text-2xl font-semibold mb-4">Sustainable Investment Products</h2>
             <div className="space-y-4 text-gray-700">
               <p>
@@ -102,7 +102,7 @@ export function SFDR() {
           </section>
 
           {/* Research Areas */}
-          <section className="bg-gray-50 p-8 rounded-lg">
+          <section className="bg-[#f1f1f1] p-8 rounded-lg">
             <h2 className="text-2xl font-semibold mb-4">Sustainability Research Areas</h2>
             <div className="space-y-4 text-gray-700">
               <div className="grid md:grid-cols-2 gap-6">
@@ -129,7 +129,7 @@ export function SFDR() {
           </section>
 
           {/* Compliance Statement */}
-          <section className="bg-gray-50 p-8 rounded-lg">
+          <section className="bg-[#f1f1f1] p-8 rounded-lg">
             <h2 className="text-2xl font-semibold mb-4">Compliance Statement</h2>
             <div className="space-y-4 text-gray-700">
               <p>

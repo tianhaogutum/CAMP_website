@@ -18,7 +18,7 @@ export function Imprint() {
         {/* Content */}
         <div className="space-y-8">
           {/* Company Information */}
-          <section className="bg-gray-50 p-8 rounded-lg">
+          <section className="bg-[#f1f1f1] p-8 rounded-lg">
             <h2 className="text-2xl font-semibold mb-4">Company Information</h2>
             <div className="space-y-3 text-gray-700">
               <p><strong>Organization:</strong> CAMP Research Group</p>
@@ -30,7 +30,7 @@ export function Imprint() {
           </section>
 
           {/* Contact Information */}
-          <section className="bg-gray-50 p-8 rounded-lg">
+          <section className="bg-[#f1f1f1] p-8 rounded-lg">
             <h2 className="text-2xl font-semibold mb-4">Contact Information</h2>
             <div className="space-y-3 text-gray-700">
               <p><strong>Email:</strong> camp@tum.de</p>
@@ -40,7 +40,7 @@ export function Imprint() {
           </section>
 
           {/* Legal Representatives */}
-          <section className="bg-gray-50 p-8 rounded-lg">
+          <section className="bg-[#f1f1f1] p-8 rounded-lg">
             <h2 className="text-2xl font-semibold mb-4">Legal Representatives</h2>
             <div className="space-y-3 text-gray-700">
               <p><strong>Director:</strong> Prof. Dr. Christoph Kaserer</p>
@@ -50,7 +50,7 @@ export function Imprint() {
           </section>
 
           {/* Registration Information */}
-          <section className="bg-gray-50 p-8 rounded-lg">
+          <section className="bg-[#f1f1f1] p-8 rounded-lg">
             <h2 className="text-2xl font-semibold mb-4">Registration Information</h2>
             <div className="space-y-3 text-gray-700">
               <p><strong>Registration Authority:</strong> Technical University of Munich</p>
@@ -60,7 +60,7 @@ export function Imprint() {
           </section>
 
           {/* Disclaimer */}
-          <section className="bg-gray-50 p-8 rounded-lg">
+          <section className="bg-[#f1f1f1] p-8 rounded-lg">
             <h2 className="text-2xl font-semibold mb-4">Disclaimer</h2>
             <div className="space-y-4 text-gray-700">
               <p>

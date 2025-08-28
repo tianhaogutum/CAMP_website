@@ -18,7 +18,7 @@ export function DataProtection() {
         {/* Content */}
         <div className="space-y-8">
           {/* Introduction */}
-          <section className="bg-gray-50 p-8 rounded-lg">
+          <section className="bg-[#f1f1f1] p-8 rounded-lg">
             <h2 className="text-2xl font-semibold mb-4">Introduction</h2>
             <div className="space-y-4 text-gray-700">
               <p>
@@ -35,7 +35,7 @@ export function DataProtection() {
           </section>
 
           {/* Data Controller */}
-          <section className="bg-gray-50 p-8 rounded-lg">
+          <section className="bg-[#f1f1f1] p-8 rounded-lg">
             <h2 className="text-2xl font-semibold mb-4">Data Controller</h2>
             <div className="space-y-3 text-gray-700">
               <p><strong>Organization:</strong> CAMP Research Group</p>
@@ -46,7 +46,7 @@ export function DataProtection() {
           </section>
 
           {/* Information We Collect */}
-          <section className="bg-gray-50 p-8 rounded-lg">
+          <section className="bg-[#f1f1f1] p-8 rounded-lg">
             <h2 className="text-2xl font-semibold mb-4">Information We Collect</h2>
             <div className="space-y-4 text-gray-700">
               <div>
@@ -71,7 +71,7 @@ export function DataProtection() {
           </section>
 
           {/* How We Use Your Information */}
-          <section className="bg-gray-50 p-8 rounded-lg">
+          <section className="bg-[#f1f1f1] p-8 rounded-lg">
             <h2 className="text-2xl font-semibold mb-4">How We Use Your Information</h2>
             <div className="space-y-3 text-gray-700">
               <p>We use the collected information for the following purposes:</p>
@@ -86,7 +86,7 @@ export function DataProtection() {
           </section>
 
           {/* Data Sharing */}
-          <section className="bg-gray-50 p-8 rounded-lg">
+          <section className="bg-[#f1f1f1] p-8 rounded-lg">
             <h2 className="text-2xl font-semibold mb-4">Data Sharing and Disclosure</h2>
             <div className="space-y-4 text-gray-700">
               <p>
@@ -103,7 +103,7 @@ export function DataProtection() {
           </section>
 
           {/* Your Rights */}
-          <section className="bg-gray-50 p-8 rounded-lg">
+          <section className="bg-[#f1f1f1] p-8 rounded-lg">
             <h2 className="text-2xl font-semibold mb-4">Your Rights</h2>
             <div className="space-y-3 text-gray-700">
               <p>Under applicable data protection laws, you have the right to:</p>
@@ -120,7 +120,7 @@ export function DataProtection() {
           </section>
 
           {/* Data Security */}
-          <section className="bg-gray-50 p-8 rounded-lg">
+          <section className="bg-[#f1f1f1] p-8 rounded-lg">
             <h2 className="text-2xl font-semibold mb-4">Data Security</h2>
             <div className="space-y-4 text-gray-700">
               <p>

@@ -129,7 +129,7 @@ export function AllProjects() {
   });
 
   return (
-    <section className="w-full py-16 md:py-24 lg:py-28" style={{backgroundColor: '#f1f1f1'}}>
+    <section className="w-full py-16 md:py-24 lg:py-28 bg-[#f1f1f1]">
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <header className="mx-auto mb-12 max-w-lg text-center md:mb-18 lg:mb-20">
           <p className="mb-3 font-semibold md:mb-4">Complete Portfolio</p>

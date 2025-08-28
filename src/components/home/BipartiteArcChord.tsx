@@ -98,8 +98,8 @@ export default function BipartiteArcChord({ left, right, links, leftTitle, right
     const W = containerSize.width || 1080;
     const width = Math.max(1200, W);
     const height = width * 0.78;
-    const innerRadius = Math.min(width, height) * 0.35 - 60;
-    const outerRadius = innerRadius + 12;
+    const innerRadius = Math.min(width, height) * 0.45 - 50;
+    const outerRadius = innerRadius + 18;
 
     const names = computed.names;
     const matrix = computed.matrix;
@@ -128,52 +128,91 @@ export default function BipartiteArcChord({ left, right, links, leftTitle, right
 
     svg.selectAll("*").remove();
 
-    // 添加左侧标题 - Research Methods（极简设计：彩色圆点 + 文本，无背景框）
     const leftTitleGroup = svg.append("g")
-       .attr("transform", `translate(${-width / 2.5}, ${-height / 2 + 100})`);
-    
-    leftTitleGroup.append("circle")
-       .attr("cx", -12)
-       .attr("cy", 4)
-       .attr("r", 6)
-       .attr("fill", "#3b82f6");
+       .attr("transform", `translate(${-width / 2.5}, ${-height / 2 + 80})`);
 
     leftTitleGroup.append("text")
        .attr("x", 6)
        .attr("y", 6)
        .attr("text-anchor", "start")
        .attr("font-size", "20px")
-       .attr("font-weight", "700")
+       .attr("font-weight", "400")
        .attr("letter-spacing", "0.3px")
        .attr("font-family", "'Inter', 'SF Pro Display', 'Segoe UI', system-ui, sans-serif")
        .attr("fill", "#111827")
        .text(leftTitle);
 
+    // 给左侧标题添加自适应背景框（无圆点）
+    try {
+      const paddingX = 10;
+      const paddingY = 6;
+      const textNode = leftTitleGroup.select("text").node() as SVGTextElement | null;
+      if (textNode) {
+        const b = textNode.getBBox();
+        const minX = b.x;
+        const minY = b.y;
+        const maxX = b.x + b.width;
+        const maxY = b.y + b.height;
+        const rect = leftTitleGroup.append("rect")
+          .attr("x", minX - paddingX)
+          .attr("y", minY - paddingY)
+          .attr("width", (maxX - minX) + paddingX * 2)
+          .attr("height", (maxY - minY) + paddingY * 2)
+          .attr("rx", 10)
+          .attr("fill", "#ffffff")
+          .attr("stroke", "#3b82f6")
+          .attr("stroke-width", 1);
+        rect.lower();
+      }
+    } catch {}
+
     // 添加右侧标题 - Research Topics（极简设计：彩色圆点 + 文本，无背景框）
-    const rightTitleX = width / 2.5 - 100; // 向左移动 100px
+    const rightTitleX = width / 2.5 - 150; // 向左移动 120px（再左移 20px）
     const rightTitleGroup = svg.append("g")
-       .attr("transform", `translate(${rightTitleX}, ${-height / 2 + 100})`);
-    
-    rightTitleGroup.append("circle")
-       .attr("cx", -12)
-       .attr("cy", 4)
-       .attr("r", 6)
-       .attr("fill", "#ec4899");
+       .attr("transform", `translate(${rightTitleX}, ${-height / 2 + 80})`);
 
     rightTitleGroup.append("text")
        .attr("x", 6)
        .attr("y", 6)
        .attr("text-anchor", "start")
        .attr("font-size", "20px")
-       .attr("font-weight", "700")
+       .attr("font-weight", "400")
        .attr("letter-spacing", "0.3px")
        .attr("font-family", "'Inter', 'SF Pro Display', 'Segoe UI', system-ui, sans-serif")
        .attr("fill", "#111827")
        .text(rightTitle);
 
+    // 给右侧标题添加自适应背景框（无圆点）
+    try {
+      const paddingX = 10;
+      const paddingY = 6;
+      const textNode = rightTitleGroup.select("text").node() as SVGTextElement | null;
+      if (textNode) {
+        const b = textNode.getBBox();
+        const minX = b.x;
+        const minY = b.y;
+        const maxX = b.x + b.width;
+        const maxY = b.y + b.height;
+        const rect = rightTitleGroup.append("rect")
+          .attr("x", minX - paddingX)
+          .attr("y", minY - paddingY)
+          .attr("width", (maxX - minX) + paddingX * 2)
+          .attr("height", (maxY - minY) + paddingY * 2)
+          .attr("rx", 10)
+          .attr("fill", "#ffffff")
+          .attr("stroke", "#ec4899")
+          .attr("stroke-width", 1);
+        rect.lower();
+      }
+    } catch {}
+
     // 压缩Y轴比例，使图形呈椭圆形
+    const compressionY = 0.75;
+    const verticalOffset = -24;
     const chartGroup = svg.append("g")
-      .attr("transform", `scale(1, 0.75)`);
+      .attr("transform", `translate(0, ${verticalOffset}) scale(1, ${compressionY})`);
+    // 独立的标签层（不缩放文字）
+    const labelsGroup = svg.append("g");
 
     const chords = chord(matrix);
     const hiddenItems = [
@@ -216,33 +255,31 @@ export default function BipartiteArcChord({ left, right, links, leftTitle, right
         .style("opacity", d => hiddenItems.includes(names[d.index]) ? 0 : 1)
         .style("cursor", "pointer");
 
-    group.append("text")
-        .attr("dy", "0.35em")
-        .attr("transform", d => {
-          const angle = Number(d.startAngle) + Number(d.endAngle);
-          const midAngle = angle / 2;
-          return `
-            rotate(${(midAngle * 180 / Math.PI - 90)})
-            translate(${outerRadius + 10})
-            ${midAngle > Math.PI ? "rotate(180)" : ""}
-          `;
-        })
-        .attr("text-anchor", d => {
-          const angle = Number(d.startAngle) + Number(d.endAngle);
-          const midAngle = angle / 2;
-          return midAngle > Math.PI ? "end" : null;
-        })
-        .attr("fill", d => {
-          // 将指定项目的文本颜色设为白色（背景色）
-          return hiddenItems.includes(names[d.index]) ? "#ffffff" : "#333";
-        })
-        .attr("font-size", "17px")
-        .attr("font-weight", "600")
-        .attr("font-family", "'Inter', 'SF Pro Display', 'Segoe UI', system-ui, sans-serif")
-        .attr("filter", (d: any) => hiddenItems.includes(names[d.index]) ? null : "drop-shadow(0 1px 1px rgba(0,0,0,0.08))")
-        .text(d => names[d.index])
-        .style("opacity", d => hiddenItems.includes(names[d.index]) ? 0 : 1)
-        .style("cursor", "pointer");
+    labelsGroup.selectAll("text")
+        .data(chords.groups)
+        .join("text")
+          .attr("dy", "0.35em")
+          .attr("transform", d => {
+            const angle = (Number(d.startAngle) + Number(d.endAngle)) / 2;
+            const r = outerRadius + 12;
+            const x = Math.cos(angle - Math.PI / 2) * r;
+            const y = Math.sin(angle - Math.PI / 2) * r * compressionY + verticalOffset;
+            return `translate(${x}, ${y})`;
+          })
+          .attr("text-anchor", d => {
+            const angle = (Number(d.startAngle) + Number(d.endAngle)) / 2;
+            const r = outerRadius + 12;
+            const x = Math.cos(angle - Math.PI / 2) * r;
+            return x < 0 ? "end" : "start";
+          })
+          .attr("fill", d => hiddenItems.includes(names[d.index]) ? "#ffffff" : "#333")
+          .attr("font-size", "17px")
+          .attr("font-weight", "400")
+          .attr("font-family", "'Inter', 'SF Pro Display', 'Segoe UI', system-ui, sans-serif")
+          .attr("filter", (d: any) => hiddenItems.includes(names[d.index]) ? null : "drop-shadow(0 1px 1px rgba(0,0,0,0.08))")
+          .text(d => names[d.index])
+          .style("opacity", d => hiddenItems.includes(names[d.index]) ? 0 : 1)
+          .style("cursor", "pointer");
 
     group.append("title")
         .text(d => `${names[d.index]}
@@ -301,7 +338,7 @@ ${d3.sum(chords, c => {
 
       // 组块与标签
       group.selectAll("path").style("opacity", (d: any) => hiddenItems.includes(names[d.index]) ? 0 : (connected.has(Number(d.index)) ? 1 : 0));
-      group.selectAll("text").style("opacity", (d: any) => hiddenItems.includes(names[d.index]) ? 0 : (connected.has(Number(d.index)) ? 1 : 0.15));
+      labelsGroup.selectAll("text").style("opacity", (d: any) => hiddenItems.includes(names[d.index]) ? 0 : (connected.has(Number(d.index)) ? 1 : 0.15));
 
       // 连带
       ribbonSel.style("opacity", (d: any) => {
@@ -313,7 +350,7 @@ ${d3.sum(chords, c => {
 
     const resetHighlight = () => {
       group.selectAll("path").style("opacity", (d: any) => hiddenItems.includes(names[d.index]) ? 0 : 1);
-      group.selectAll("text").style("opacity", (d: any) => hiddenItems.includes(names[d.index]) ? 0 : 1);
+      labelsGroup.selectAll("text").style("opacity", (d: any) => hiddenItems.includes(names[d.index]) ? 0 : 1);
       ribbonSel.style("opacity", (d: any) => (hiddenItems.includes(names[d.source.index]) || hiddenItems.includes(names[d.target.index])) ? 0 : 1);
     };
 
@@ -327,7 +364,7 @@ ${d3.sum(chords, c => {
   }, [computed, containerSize, leftTitle, rightTitle]);
 
   return (
-    <div ref={wrapperRef} className={"w-full h-[750px] bg-white border-0 outline-none shadow-none " + (className || "")}>
+    <div ref={wrapperRef} className={"w-full h-[780px] bg-[#f1f1f1] border-0 outline-none shadow-none " + (className || "")}>
       <svg ref={ref} role="img" aria-label={`${leftTitle} to ${rightTitle} chord diagram`}></svg>
       <div className="sr-only">Interactive chord diagram showing connections between {leftTitle} and {rightTitle}.</div>
     </div>

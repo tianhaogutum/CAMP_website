@@ -3,3 +3,37 @@
 @tailwind utilities;
 
 /* 这里可以添加你自己的自定义样式 */
+
+/* Neon shimmering animated text for Join Us */
+.neon-shimmer-text {
+  background: linear-gradient(90deg, #00e5ff, #a855f7, #00e5ff);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 2.6s linear infinite, neonGlow 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+@keyframes neonGlow {
+  0%, 100% {
+    text-shadow: 0 0 6px rgba(0, 229, 255, 0.6), 0 0 12px rgba(168, 85, 247, 0.4);
+  }
+  50% {
+    text-shadow: 0 0 10px rgba(0, 229, 255, 0.8), 0 0 22px rgba(168, 85, 247, 0.6);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .neon-shimmer-text {
+    animation: none;
+  }
+}
