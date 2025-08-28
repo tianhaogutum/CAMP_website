@@ -208,7 +208,7 @@ export default function BipartiteArcChord({ left, right, links, leftTitle, right
 
     // 压缩Y轴比例，使图形呈椭圆形
     const compressionY = 0.75;
-    const verticalOffset = -24;
+    const verticalOffset = -36;
     const chartGroup = svg.append("g")
       .attr("transform", `translate(0, ${verticalOffset}) scale(1, ${compressionY})`);
     // 独立的标签层（不缩放文字）
@@ -364,7 +364,7 @@ ${d3.sum(chords, c => {
   }, [computed, containerSize, leftTitle, rightTitle]);
 
   return (
-    <div ref={wrapperRef} className={"w-full h-[520px] sm:h-[600px] md:h-[720px] lg:h-[780px] bg-[#f1f1f1] border-0 outline-none shadow-none " + (className || "")}>
+    <div ref={wrapperRef} className={"w-full h-[440px] sm:h-[560px] md:h-[680px] lg:h-[760px] bg-[#f1f1f1] border-0 outline-none shadow-none " + (className || "")}>
       <svg ref={ref} role="img" aria-label={`${leftTitle} to ${rightTitle} chord diagram`}></svg>
       <div className="sr-only">Interactive chord diagram showing connections between {leftTitle} and {rightTitle}.</div>
     </div>
