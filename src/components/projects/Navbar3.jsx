@@ -47,7 +47,7 @@ export function Navbar3() {
   }, []);
 
   return (
-    <nav aria-label="Primary" className={`fixed top-0 left-0 right-0 z-[999] grid w-full grid-cols-[1fr_max-content_1fr] items-center justify-between bg-background-primary px-[5%] md:min-h-18 transition-all duration-300 ${
+    <nav aria-label="Primary" className={`fixed top-0 left-0 right-0 z-[999] grid w-full grid-cols-[1fr_max-content_1fr] items-center justify-between bg-background-primary px-[2%] md:min-h-18 transition-all duration-300 ${
       isScrolled ? 'shadow-lg bg-white' : 'bg-background-primary'
     }`}>
       <a
@@ -88,21 +88,21 @@ export function Navbar3() {
           className="text-base relative block py-3 lg:px-4 lg:py-2"
           aria-current={location.pathname.startsWith('/projects') ? 'page' : undefined}
         >
-          Our Projects
+          Projects
         </Link>
         <Link
           to="/team"
           className="text-base relative block py-3 lg:px-4 lg:py-2"
           aria-current={location.pathname.startsWith('/team') ? 'page' : undefined}
         >
-          Our Team
+          Team
         </Link>
         <Link
           to="/contact"
           className="text-base relative block py-3 lg:px-4 lg:py-2"
           aria-current={location.pathname.startsWith('/contact') ? 'page' : undefined}
         >
-          Contact Us
+          Contact
         </Link>
         <Button className="mt-6 w-full lg:hidden" title="Menu" size="sm">
           Menu
@@ -117,10 +117,19 @@ export function Navbar3() {
         />
       )}
       
-      <Link to="/" className="flex min-h-16 shrink-0 items-center">
-        <span className="text-xl font-bold text-text-primary">CEFS</span>
+      <Link to="/" className="flex h-12 shrink-0 items-center gap-3">
+        <div className="hidden sm:block">
+          <div className="text-lg font-bold text-text-primary leading-tight border-2 border-blue-500 px-4 py-2 rounded-lg shadow-md bg-gradient-to-r from-blue-50 to-purple-50 hover:shadow-lg transition-all duration-300">
+            Center for Entrepreneurial and Financial Studies
+          </div>
+        </div>
+        <img
+          src="/images/icon.png"
+          alt="CEFS Logo"
+          className="h-12 w-auto object-contain"
+        />
       </Link>
-      <div className="flex min-h-16 items-center justify-end gap-x-4">
+      <div className="flex h-12 items-center justify-end gap-x-4">
         <div className="relative" ref={useActive.joinUsRef}>
           <Button
             title="Join us"
