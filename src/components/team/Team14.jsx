@@ -4,9 +4,9 @@ import React from "react";
 
 export function Team14() {
   return (
-    <section className="w-full py-16 md:py-24 lg:py-28">
+    <section className="w-full py-8 md:py-12 lg:py-16">
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-12 max-w-lg md:mb-18 lg:mb-20">
+        <div className="mb-8 max-w-lg md:mb-12 lg:mb-16">
           <p className="mb-3 font-semibold md:mb-4">Expertise</p>
           <h2 className="mb-5 text-4xl font-bold md:mb-6 md:text-5xl">Professors</h2>
           <p className="text-lg">

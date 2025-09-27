@@ -4,9 +4,9 @@ import React from "react";
 
 export function Team14_1() {
   return (
-    <section className="w-full py-16 md:py-24 lg:py-28" style={{backgroundColor: '#f1f1f1'}}>
+    <section className="w-full py-8 md:py-12 lg:py-16" style={{backgroundColor: '#f1f1f1'}}>
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-12 max-w-lg md:mb-18 lg:mb-20">
+        <div className="mb-8 max-w-lg md:mb-12 lg:mb-16">
           <h2 className="mb-5 text-4xl font-bold md:mb-6 md:text-5xl">Research Leads</h2>
           <p className="text-lg">
             Meet our research leaders driving innovation in AI-powered private market analysis.
