@@ -357,6 +357,34 @@ ${d3.sum(chords, c => {
     group.on("mouseover", (_event: any, d: any) => highlightByIndex(Number(d.index)))
          .on("mouseout", resetHighlight);
 
+    // Add hover effects to edges (ribbons)
+    ribbonSel.on("mouseover", (_event: any, d: any) => {
+      // Highlight the specific edge and its connected nodes
+      const sourceIndex = Number(d.source.index);
+      const targetIndex = Number(d.target.index);
+      
+      // Highlight connected nodes
+      group.selectAll("path").style("opacity", (nodeData: any) => {
+        const nodeIndex = Number(nodeData.index);
+        return hiddenItems.includes(names[nodeIndex]) ? 0 : 
+               (nodeIndex === sourceIndex || nodeIndex === targetIndex) ? 1 : 0.3;
+      });
+      
+      labelsGroup.selectAll("text").style("opacity", (nodeData: any) => {
+        const nodeIndex = Number(nodeData.index);
+        return hiddenItems.includes(names[nodeIndex]) ? 0 : 
+               (nodeIndex === sourceIndex || nodeIndex === targetIndex) ? 1 : 0.15;
+      });
+      
+      // Highlight the specific edge and dim others
+      ribbonSel.style("opacity", (edgeData: any) => {
+        const hide = hiddenItems.includes(names[edgeData.source.index]) || hiddenItems.includes(names[edgeData.target.index]);
+        if (hide) return 0;
+        return (Number(edgeData.source.index) === sourceIndex && Number(edgeData.target.index) === targetIndex) ? 1 : 0.2;
+      });
+    })
+    .on("mouseout", resetHighlight);
+
     // Cleanup function
     return () => {
       svg.selectAll("*").remove();

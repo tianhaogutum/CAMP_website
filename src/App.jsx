@@ -20,10 +20,12 @@ import TeamPage from './components/team/TeamPage'
 import { Imprint } from './components/legal/Imprint'
 import { DataProtection } from './components/legal/DataProtection'
 import { SFDR } from './components/legal/SFDR'
+import ScrollToTop from './components/ScrollToTop'
 
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/contact" element={<ContactPage />} />
