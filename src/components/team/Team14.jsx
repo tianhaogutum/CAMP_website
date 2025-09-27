@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { DribbbleLogo, LinkedinLogo, XLogo } from "relume-icons";
 
 export function Team14() {
   return (
@@ -30,17 +29,6 @@ export function Team14() {
             <p>
               Leading research in entrepreneurial finance and private equity, with expertise in AI applications for investment decision-making and market analysis. Professor at TUM School of Management since 2015.
             </p>
-            <div className="mt-6 grid grid-flow-col grid-cols-[max-content] gap-3.5 self-start">
-              <a href="#">
-                <LinkedinLogo className="size-6 text-text-primary" />
-              </a>
-              <a href="#">
-                <XLogo className="size-6 p-0.5 text-text-primary" />
-              </a>
-              <a href="#">
-                <DribbbleLogo className="size-6 text-text-primary" />
-              </a>
-            </div>
           </div>
           <div className="flex flex-col">
             <ul className="space-y-4 text-xl">

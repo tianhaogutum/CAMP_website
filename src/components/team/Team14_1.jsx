@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { DribbbleLogo, LinkedinLogo, XLogo } from "relume-icons";
 
 export function Team14_1() {
   return (
@@ -17,8 +16,8 @@ export function Team14_1() {
           <div className="flex flex-col">
             <div className="relative mb-5 aspect-square w-96 h-96 md:w-[28rem] md:h-[28rem] overflow-hidden md:mb-6">
               <img
-                src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg"
-                alt="Relume placeholder image 1"
+                src="/images/sara.png"
+                alt="Dr. Sara Boni"
                 className="absolute inset-0 w-full h-full object-cover"
               />
             </div>
@@ -29,23 +28,12 @@ export function Team14_1() {
             <p>
               Leading research in entrepreneurial finance and private equity, with expertise in AI applications for investment decision-making and market analysis. Professor at TUM School of Management since 2015.
             </p>
-            <div className="mt-6 grid grid-flow-col grid-cols-[max-content] gap-3.5 self-start">
-              <a href="#">
-                <LinkedinLogo className="size-6 text-text-primary" />
-              </a>
-              <a href="#">
-                <XLogo className="size-6 p-0.5 text-text-primary" />
-              </a>
-              <a href="#">
-                <DribbbleLogo className="size-6 text-text-primary" />
-              </a>
-            </div>
           </div>
           <div className="flex flex-col">
             <div className="relative mb-5 aspect-square w-96 h-96 md:w-[28rem] md:h-[28rem] overflow-hidden md:mb-6">
               <img
-                src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg"
-                alt="Relume placeholder image 1"
+                src="/images/max.png"
+                alt="Dr. Max Sina Knicker"
                 className="absolute inset-0 w-full h-full object-cover"
               />
             </div>
@@ -56,17 +44,6 @@ export function Team14_1() {
             <p>
               Specializing in data modeling and investment trend forecasting.
             </p>
-            <div className="mt-6 grid grid-flow-col grid-cols-[max-content] gap-3.5 self-start">
-              <a href="#">
-                <LinkedinLogo className="size-6 text-text-primary" />
-              </a>
-              <a href="#">
-                <XLogo className="size-6 p-0.5 text-text-primary" />
-              </a>
-              <a href="#">
-                <DribbbleLogo className="size-6 text-text-primary" />
-              </a>
-            </div>
           </div>
         </div>
         <div className="mt-8 w-full max-w-md md:mt-10 lg:mt-12" />

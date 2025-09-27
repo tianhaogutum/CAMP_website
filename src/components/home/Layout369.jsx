@@ -69,8 +69,8 @@ export function Layout369() {
               </div>
               <div className="flex items-center justify-center">
                 <img
-                  src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image-landscape.svg"
-                  alt="Relume placeholder image 1"
+                  src="/images/collaborate.jpg"
+                  alt="Strategic Investment Guidance"
                   className="w-full object-cover"
                 />
               </div>

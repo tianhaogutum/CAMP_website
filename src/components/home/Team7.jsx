@@ -1,5 +1,4 @@
 import { Button } from "@relume_io/relume-ui";
-import { DribbbleLogo, LinkedinLogo, XLogo } from "relume-icons";
 import React from "react";
 
 export function Team7() {
@@ -17,8 +16,8 @@ export function Team7() {
           <div className="flex flex-col items-start">
             <div className="mb-5 md:mb-6">
               <img
-                src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg"
-                alt="Relume placeholder image 1"
+                src="/images/Julius.png"
+                alt="Anna Müller"
                 className="size-20 min-h-20 min-w-20 rounded-full object-cover"
               />
             </div>
@@ -30,23 +29,12 @@ export function Team7() {
               Passionate about advancing private equity through innovative
               research and analysis.
             </p>
-            <div className="mt-6 flex gap-3.5">
-              <a href="#">
-                <LinkedinLogo className="size-6 text-gray-600" />
-              </a>
-              <a href="#">
-                <XLogo className="size-6 p-0.5 text-gray-600" />
-              </a>
-              <a href="#">
-                <DribbbleLogo className="size-6 text-gray-600" />
-              </a>
-            </div>
           </div>
           <div className="flex flex-col items-start">
             <div className="mb-5 md:mb-6">
               <img
-                src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg"
-                alt="Relume placeholder image 1"
+                src="/images/nicolas.png"
+                alt="Mark Schmidt"
                 className="size-20 min-h-20 min-w-20 rounded-full object-cover"
               />
             </div>
@@ -58,23 +46,12 @@ export function Team7() {
               Specializing in data-driven insights to inform investment
               strategies and decisions.
             </p>
-            <div className="mt-6 flex gap-3.5">
-              <a href="#">
-                <LinkedinLogo className="size-6 text-gray-600" />
-              </a>
-              <a href="#">
-                <XLogo className="size-6 p-0.5 text-gray-600" />
-              </a>
-              <a href="#">
-                <DribbbleLogo className="size-6 text-gray-600" />
-              </a>
-            </div>
           </div>
           <div className="flex flex-col items-start">
             <div className="mb-5 md:mb-6">
               <img
-                src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg"
-                alt="Relume placeholder image 1"
+                src="/images/Laura.png"
+                alt="Lisa Becker"
                 className="size-20 min-h-20 min-w-20 rounded-full object-cover"
               />
             </div>
@@ -86,23 +63,12 @@ export function Team7() {
               Expert in coordinating research projects and ensuring timely
               delivery of results.
             </p>
-            <div className="mt-6 flex gap-3.5">
-              <a href="#">
-                <LinkedinLogo className="size-6 text-gray-600" />
-              </a>
-              <a href="#">
-                <XLogo className="size-6 p-0.5 text-gray-600" />
-              </a>
-              <a href="#">
-                <DribbbleLogo className="size-6 text-gray-600" />
-              </a>
-            </div>
           </div>
           <div className="flex flex-col items-start">
             <div className="mb-5 md:mb-6">
               <img
-                src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg"
-                alt="Relume placeholder image 1"
+                src="/images/max.png"
+                alt="Tom Wagner"
                 className="size-20 min-h-20 min-w-20 rounded-full object-cover"
               />
             </div>
@@ -114,23 +80,12 @@ export function Team7() {
               Focused on evaluating market trends to optimize investment
               portfolios.
             </p>
-            <div className="mt-6 flex gap-3.5">
-              <a href="#">
-                <LinkedinLogo className="size-6 text-gray-600" />
-              </a>
-              <a href="#">
-                <XLogo className="size-6 p-0.5 text-gray-600" />
-              </a>
-              <a href="#">
-                <DribbbleLogo className="size-6 text-gray-600" />
-              </a>
-            </div>
           </div>
           <div className="flex flex-col items-start">
             <div className="mb-5 md:mb-6">
               <img
-                src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg"
-                alt="Relume placeholder image 1"
+                src="/images/sara.png"
+                alt="Sophie Klein"
                 className="size-20 min-h-20 min-w-20 rounded-full object-cover"
               />
             </div>
@@ -142,23 +97,12 @@ export function Team7() {
               Assisting in data collection and analysis for ongoing research
               initiatives.
             </p>
-            <div className="mt-6 flex gap-3.5">
-              <a href="#">
-                <LinkedinLogo className="size-6 text-gray-600" />
-              </a>
-              <a href="#">
-                <XLogo className="size-6 p-0.5 text-gray-600" />
-              </a>
-              <a href="#">
-                <DribbbleLogo className="size-6 text-gray-600" />
-              </a>
-            </div>
           </div>
           <div className="flex flex-col items-start">
             <div className="mb-5 md:mb-6">
               <img
-                src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg"
-                alt="Relume placeholder image 1"
+                src="/images/Laura.png"
+                alt="We're hiring!"
                 className="size-20 min-h-20 min-w-20 rounded-full object-cover"
               />
             </div>
@@ -170,17 +114,6 @@ export function Team7() {
               Explore exciting career opportunities to contribute to innovative
               research in private equity.
             </p>
-            <div className="mt-6 flex gap-3.5">
-              <a href="#">
-                <LinkedinLogo className="size-6 text-gray-600" />
-              </a>
-              <a href="#">
-                <XLogo className="size-6 p-0.5 text-gray-600" />
-              </a>
-              <a href="#">
-                <DribbbleLogo className="size-6 text-gray-600" />
-              </a>
-            </div>
           </div>
         </div>
         <div className="mt-14 w-full max-w-md md:mt-20 lg:mt-24">

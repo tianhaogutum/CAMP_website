@@ -25,8 +25,8 @@ export function Contact16() {
                   </div>
                   <div>
                     <h3 className="mb-1 text-lg font-bold">Email</h3>
-                    <a className="underline" href="#">
-                      hello@relume.io
+                    <a className="underline" href="mailto:karin.papavlassopoulos@tum.de">
+                      karin.papavlassopoulos@tum.de
                     </a>
                   </div>
                 </div>

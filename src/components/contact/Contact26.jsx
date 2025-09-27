@@ -15,10 +15,10 @@ export function Contact26() {
         </div>
         <div className="grid auto-cols-fr grid-cols-1 items-center gap-x-12 gap-y-12 md:grid-cols-2 md:gap-16">
           <div className="flex flex-col items-center justify-start text-center">
-            <div className="mb-6 aspect-[3/2] md:mb-8">
+            <div className="mb-6 aspect-[3/2] md:mb-8 overflow-hidden rounded-lg">
               <img
                 src="/images/tum_management.jpg"
-                className="h-full w-full rounded-lg object-cover"
+                className="h-full w-full object-cover"
                 alt="TUM School of Management"
               />
             </div>
@@ -26,10 +26,10 @@ export function Contact26() {
             <p className="text-center">Arcisstraße 21<br />80333 München</p>
           </div>
           <div className="flex flex-col items-center justify-start text-center">
-            <div className="mb-6 aspect-[3/2] md:mb-8">
+            <div className="mb-6 aspect-[3/2] md:mb-8 overflow-hidden rounded-lg">
               <img
-                src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image-landscape.svg"
-                className="h-full w-full rounded-lg object-cover"
+                src="/images/equation.png"
+                className="h-full w-full object-cover"
                 alt="Equation AG Munich Office"
               />
             </div>
