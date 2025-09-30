@@ -42,7 +42,7 @@ export function Team14_1() {
               <h6 className="text-lg">Research Lead</h6>
             </div>
             <p>
-              Specializing in data modeling and investment trend forecasting.
+              I develop models and strategies to help institutional investors navigate the liquidity challenges of alternatives markets, making alternative investments more predictable, accessible, and integrable into global portfolios.
             </p>
           </div>
         </div>

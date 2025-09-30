@@ -61,6 +61,22 @@ export function Team6() {
             </div>
             <p>Coordinates projects to ensure timely and effective delivery.</p>
           </div>
+          <div className="flex flex-col items-start">
+            <div className="relative mb-5 aspect-square w-64 overflow-hidden md:mb-6 md:w-72">
+              <img
+                src="/images/phillip.jpg"
+                alt="Philipp Bockshecker"
+                className="absolute inset-0 h-full w-full object-cover"
+              />
+            </div>
+            <div className="mb-3 md:mb-4">
+              <h5 className="text-xl font-semibold">Philipp Bockshecker</h5>
+              <h6 className="text-lg">Research Assistant</h6>
+            </div>
+            <p>
+              Contributing a quantitative perspective on performance persistence in private equity and its implications for investment decisions.
+            </p>
+          </div>
         </div>
 
       </div>
