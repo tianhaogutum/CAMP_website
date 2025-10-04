@@ -34,6 +34,7 @@
     "react-dom": "^18.3.1",
     "react-router-dom": "^7.8.0",
     "relume-icons": "^1.0.9",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "xlsx": "^0.18.5"
   }
 }

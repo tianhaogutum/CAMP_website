@@ -8,14 +8,14 @@ import { Cta25 } from "./Cta25";
 import { Footer6 } from "./Footer6";
 import { getProjectById } from "../../utils/projectData";
 
-export default function Project3() {
+const ProjectTemplate = ({ projectId }) => {
   const [projectData, setProjectData] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const loadProjectData = async () => {
       try {
-        const data = await getProjectById(3);
+        const data = await getProjectById(projectId);
         setProjectData(data);
       } catch (error) {
         console.error('Error loading project data:', error);
@@ -25,7 +25,7 @@ export default function Project3() {
     };
 
     loadProjectData();
-  }, []);
+  }, [projectId]);
 
   if (loading) {
     return (
@@ -50,4 +50,6 @@ export default function Project3() {
       <Footer6 />
     </div>
   );
-}
+};
+
+export default ProjectTemplate;
