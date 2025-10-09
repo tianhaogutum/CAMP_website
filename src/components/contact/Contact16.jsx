@@ -36,8 +36,8 @@ export function Contact16() {
                   </div>
                   <div>
                     <h3 className="mb-1 text-lg font-bold">Phone</h3>
-                    <a className="underline" href="#">
-                      +1 (555) 123-4567
+                    <a className="underline" href="tel:+49-89-289-25489">
+                      +49-(0)89-289-25489
                     </a>
                   </div>
                 </div>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Navbar3 } from "./Navbar3";
 import { DynamicPortfolioHeader } from "./DynamicPortfolioHeader";
 import { DynamicContent } from "./DynamicContent";
+import { ResearchContent } from "./ResearchContent";
 import { Layout242 } from "./Layout242";
 import { Layout121 } from "./Layout121";
 import { Cta25 } from "./Cta25";
@@ -44,6 +45,7 @@ export default function Project1() {
       <Navbar3 />
       <DynamicPortfolioHeader projectData={projectData} />
       <DynamicContent projectData={projectData} />
+      <ResearchContent />
       <Layout242 />
       <Layout121 />
       <Cta25 />

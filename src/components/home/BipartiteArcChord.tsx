@@ -36,15 +36,25 @@ export const demoData = {
     "Wealth & Income Inequality"
   ],
   links: [
+    // Agent-based Modelling (left[0]) 连接到 right 的所有项目
     [0, 0], [0, 1], [0, 2], [0, 3], [0, 4], [0, 5], [0, 6], [0, 7], [0, 8], [0, 9],
+    // Deep Learning (left[1]) 连接到 right 的所有项目
     [1, 0], [1, 1], [1, 2], [1, 3], [1, 4], [1, 5], [1, 6], [1, 7], [1, 8], [1, 9],
+    // Dynamical Systems Theory (left[2]) 连接到 right 的所有项目
     [2, 0], [2, 1], [2, 2], [2, 3], [2, 4], [2, 5], [2, 6], [2, 7], [2, 8], [2, 9],
+    // Empirical Analysis (left[3]) 连接到 right 的所有项目
     [3, 0], [3, 1], [3, 2], [3, 3], [3, 4], [3, 5], [3, 6], [3, 7], [3, 8], [3, 9],
+    // Game Theory (left[4]) 连接到 right 的所有项目
     [4, 0], [4, 1], [4, 2], [4, 3], [4, 4], [4, 5], [4, 6], [4, 7], [4, 8], [4, 9],
+    // Information Theory (left[5]) 连接到 right 的所有项目
     [5, 0], [5, 1], [5, 2], [5, 3], [5, 4], [5, 5], [5, 6], [5, 7], [5, 8], [5, 9],
+    // Numerical Simulation (left[6]) 连接到 right 的所有项目
     [6, 0], [6, 1], [6, 2], [6, 3], [6, 4], [6, 5], [6, 6], [6, 7], [6, 8], [6, 9],
+    // Random Matrix Theory (left[7]) 连接到 right 的所有项目
     [7, 0], [7, 1], [7, 2], [7, 3], [7, 4], [7, 5], [7, 6], [7, 7], [7, 8], [7, 9],
+    // Statistical Mechanics (left[8]) 连接到 right 的所有项目
     [8, 0], [8, 1], [8, 2], [8, 3], [8, 4], [8, 5], [8, 6], [8, 7], [8, 8], [8, 9],
+    // Stochastic Processes (left[9]) 连接到 right 的所有项目
     [9, 0], [9, 1], [9, 2], [9, 3], [9, 4], [9, 5], [9, 6], [9, 7], [9, 8], [9, 9]
   ]
 };
@@ -97,12 +107,12 @@ export default function BipartiteArcChord({ left, right, links, leftTitle, right
     const svg = d3.select(ref.current);
     const W = containerSize.width || 1080;
     // Use container width directly with an upper cap to avoid forcing large layouts on mobile
-    const width = Math.min(1200, Math.max(320, W));
+    const width = Math.min(1800, Math.max(400, W));
     const isSmall = width < 640;
     // Make height proportional and allow extra headroom on small screens to avoid crowding
-    const height = Math.max(isSmall ? 280 : 260, Math.floor(width * (isSmall ? 0.9 : 0.65)));
-    const innerRadius = Math.min(width, height) * 0.45 - 50;
-    const outerRadius = innerRadius + 18;
+    const height = Math.max(isSmall ? 320 : 300, Math.floor(width * (isSmall ? 0.9 : 0.7)));
+    const innerRadius = Math.min(width, height) * 0.5 - 60;
+    const outerRadius = innerRadius + 22;
 
     const names = computed.names;
     const matrix = computed.matrix;
@@ -124,12 +134,12 @@ export default function BipartiteArcChord({ left, right, links, leftTitle, right
 
     const padX = isSmall ? 0 : Math.max(60, Math.floor(width * 0.12));
     const padTop = isSmall ? 10 : 20;
-    const padBottom = isSmall ? 0 : 10;
+    const padBottom = 0;
 
     svg.attr("width", width)
       .attr("height", height)
       .attr("viewBox", [(-width / 2) - padX, (-height / 2) - padTop, width + padX * 2, height + padBottom])
-      .attr("style", "width: 100%; height: auto; font: 16px 'Inter', 'SF Pro Display', 'Segoe UI', system-ui, sans-serif;")
+      .attr("style", "width: 100%; height: auto; font: 18px 'Inter', 'SF Pro Display', 'Segoe UI', system-ui, sans-serif;")
       .style("border", "none")
       .style("outline", "none");
 
@@ -137,30 +147,41 @@ export default function BipartiteArcChord({ left, right, links, leftTitle, right
 
     if (!isSmall) {
       const leftTitleGroup = svg.append("g")
-         .attr("transform", `translate(${-width / 2.5}, ${-height / 2 + 80})`);
+         .attr("transform", `translate(${-width / 1.75}, 0)`);
 
-      leftTitleGroup.append("text")
-         .attr("x", 6)
-         .attr("y", 6)
-         .attr("text-anchor", "start")
-         .attr("font-size", "20px")
-         .attr("font-weight", "400")
-         .attr("letter-spacing", "0.3px")
-         .attr("font-family", "'Inter', 'SF Pro Display', 'Segoe UI', system-ui, sans-serif")
-         .attr("fill", "#111827")
-         .text(leftTitle);
+      // 创建竖列标题 "Research Methods"
+      const leftTitleText = "Research Methods";
+      const leftTitleWords = leftTitleText.split(" ");
+      
+      leftTitleWords.forEach((word, index) => {
+        leftTitleGroup.append("text")
+           .attr("x", 6)
+           .attr("y", 6 + index * 20)
+           .attr("text-anchor", "middle")
+           .attr("font-size", "22px")
+           .attr("font-weight", "600")
+           .attr("letter-spacing", "0.5px")
+           .attr("font-family", "'Inter', 'SF Pro Display', 'Segoe UI', system-ui, sans-serif")
+           .attr("fill", "#628296")
+           .text(word);
+      });
 
-      // 给左侧标题添加自适应背景框（无圆点）
+      // 给左侧标题添加自适应背景框（包含所有文字）
       try {
         const paddingX = 10;
         const paddingY = 6;
-        const textNode = leftTitleGroup.select("text").node() as SVGTextElement | null;
-        if (textNode) {
-          const b = textNode.getBBox();
-          const minX = b.x;
-          const minY = b.y;
-          const maxX = b.x + b.width;
-          const maxY = b.y + b.height;
+        const textNodes = leftTitleGroup.selectAll("text").nodes() as SVGTextElement[];
+        if (textNodes.length > 0) {
+          // 计算所有文字元素的边界
+          let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+          textNodes.forEach(node => {
+            const b = node.getBBox();
+            minX = Math.min(minX, b.x);
+            minY = Math.min(minY, b.y);
+            maxX = Math.max(maxX, b.x + b.width);
+            maxY = Math.max(maxY, b.y + b.height);
+          });
+          
           const rect = leftTitleGroup.append("rect")
             .attr("x", minX - paddingX)
             .attr("y", minY - paddingY)
@@ -175,34 +196,45 @@ export default function BipartiteArcChord({ left, right, links, leftTitle, right
       } catch {}
     }
 
-    // 添加右侧标题 - Research Topics（极简设计：彩色圆点 + 文本，无背景框）
+    // 添加右侧标题 - Research Topics
     if (!isSmall) {
-      const rightTitleX = width / 2.5 - 150; // 向左移动 120px（再左移 20px）
+      const rightTitleX = width / 1.75 - 12; // 调整位置到合适距离
       const rightTitleGroup = svg.append("g")
-         .attr("transform", `translate(${rightTitleX}, ${-height / 2 + 80})`);
+         .attr("transform", `translate(${rightTitleX}, 0)`);
 
-      rightTitleGroup.append("text")
-         .attr("x", 6)
-         .attr("y", 6)
-         .attr("text-anchor", "start")
-         .attr("font-size", "20px")
-         .attr("font-weight", "400")
-         .attr("letter-spacing", "0.3px")
-         .attr("font-family", "'Inter', 'SF Pro Display', 'Segoe UI', system-ui, sans-serif")
-         .attr("fill", "#111827")
-         .text(rightTitle);
+      // 创建竖列标题 "Research Topics"
+      const rightTitleText = "Research Topics";
+      const rightTitleWords = rightTitleText.split(" ");
+      
+      rightTitleWords.forEach((word, index) => {
+        rightTitleGroup.append("text")
+           .attr("x", 6)
+           .attr("y", 6 + index * 20)
+           .attr("text-anchor", "middle")
+           .attr("font-size", "22px")
+           .attr("font-weight", "600")
+           .attr("letter-spacing", "0.5px")
+           .attr("font-family", "'Inter', 'SF Pro Display', 'Segoe UI', system-ui, sans-serif")
+           .attr("fill", "#ea580c")
+           .text(word);
+      });
 
-      // 给右侧标题添加自适应背景框（无圆点）
+      // 给右侧标题添加自适应背景框（包含所有文字）
       try {
         const paddingX = 10;
         const paddingY = 6;
-        const textNode = rightTitleGroup.select("text").node() as SVGTextElement | null;
-        if (textNode) {
-          const b = textNode.getBBox();
-          const minX = b.x;
-          const minY = b.y;
-          const maxX = b.x + b.width;
-          const maxY = b.y + b.height;
+        const textNodes = rightTitleGroup.selectAll("text").nodes() as SVGTextElement[];
+        if (textNodes.length > 0) {
+          // 计算所有文字元素的边界
+          let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+          textNodes.forEach(node => {
+            const b = node.getBBox();
+            minX = Math.min(minX, b.x);
+            minY = Math.min(minY, b.y);
+            maxX = Math.max(maxX, b.x + b.width);
+            maxY = Math.max(maxY, b.y + b.height);
+          });
+          
           const rect = rightTitleGroup.append("rect")
             .attr("x", minX - paddingX)
             .attr("y", minY - paddingY)
@@ -255,7 +287,36 @@ export default function BipartiteArcChord({ left, right, links, leftTitle, right
     group.append("path")
         .attr("fill", d => {
           // 将指定项目对应的块颜色设为白色（背景色）
-          return hiddenItems.includes(names[d.index]) ? "#ffffff" : colors[d.index];
+          if (hiddenItems.includes(names[d.index])) {
+            return "#ffffff";
+          }
+          // 指定的项目使用蓝灰色
+          const blueGrayItems = [
+            "Stochastic Processes",
+            "Statistical Mechanics",
+            "Social Dynamics",
+            "Risk Management",
+            "Random Matrix Theory",
+            "Numerical Simulation",
+            "Market Microstructure",
+            "Information Theory"
+          ];
+          // 指定的项目使用橙色
+          const orangeItems = [
+            "Agent-based Modelling",
+            "Climate Economics",
+            "Deep Learning",
+            "Dynamical Systems Theory",
+            "Economic Networks",
+            "Emergent Phenomena",
+            "Empirical Analysis",
+            "Financial Time-Series"
+          ];
+          const shouldBeBlueGray = blueGrayItems.includes(names[d.index]);
+          const shouldBeOrange = orangeItems.includes(names[d.index]);
+          if (shouldBeBlueGray) return "#628296";
+          if (shouldBeOrange) return "#ea580c";
+          return colors[d.index];
         })
         .attr("d", d => arc({
           startAngle: d.startAngle,
@@ -285,7 +346,7 @@ export default function BipartiteArcChord({ left, right, links, leftTitle, right
               return x < 0 ? "end" : "start";
             })
             .attr("fill", d => hiddenItems.includes(names[d.index]) ? "#ffffff" : "#333")
-            .attr("font-size", "17px")
+            .attr("font-size", "19px")
             .attr("font-weight", "400")
             .attr("font-family", "'Inter', 'SF Pro Display', 'Segoe UI', system-ui, sans-serif")
             .attr("filter", (d: any) => hiddenItems.includes(names[d.index]) ? null : "drop-shadow(0 1px 1px rgba(0,0,0,0.08))")
@@ -316,8 +377,8 @@ ${d3.sum(chords, c => {
         .join("path")
           .style("mix-blend-mode", "multiply")
           .attr("fill", d => {
-            // 将指定项目相关的连接线颜色设为白色（背景色）
-            return (hiddenItems.includes(names[d.target.index]) || hiddenItems.includes(names[d.source.index])) ? "#ffffff" : colors[d.target.index];
+            // 将指定项目相关的连接线颜色设为白色（背景色），其他使用浅灰色
+            return (hiddenItems.includes(names[d.target.index]) || hiddenItems.includes(names[d.source.index])) ? "#ffffff" : "#d1d5db";
           })
           .style("opacity", d => (hiddenItems.includes(names[d.target.index]) || hiddenItems.includes(names[d.source.index])) ? 0 : 1)
           .attr("d", d => {
@@ -367,38 +428,17 @@ ${d3.sum(chords, c => {
       ribbonSel.style("opacity", (d: any) => (hiddenItems.includes(names[d.source.index]) || hiddenItems.includes(names[d.target.index])) ? 0 : 1);
     };
 
-    group.on("mouseover", (_event: any, d: any) => highlightByIndex(Number(d.index)))
-         .on("mouseout", resetHighlight);
+    // 添加鼠标悬停交互效果
+    group.on("mouseover", (_event: any, d: any) => {
+      const hoveredIndex = Number(d.index);
+      if (hiddenItems.includes(names[hoveredIndex])) return;
+      
+      // 高亮悬停的节点和相关的弦
+      highlightByIndex(hoveredIndex);
+    });
 
-    // Add hover effects to edges (ribbons)
-    ribbonSel.on("mouseover", (_event: any, d: any) => {
-      // Highlight the specific edge and its connected nodes
-      const sourceIndex = Number(d.source.index);
-      const targetIndex = Number(d.target.index);
-      
-      // Highlight connected nodes
-      group.selectAll("path").style("opacity", (nodeData: any) => {
-        const nodeIndex = Number(nodeData.index);
-        return hiddenItems.includes(names[nodeIndex]) ? 0 : 
-               (nodeIndex === sourceIndex || nodeIndex === targetIndex) ? 1 : 0.3;
-      });
-      
-      if (labelsGroup) {
-        labelsGroup.selectAll("text").style("opacity", (nodeData: any) => {
-          const nodeIndex = Number(nodeData.index);
-          return hiddenItems.includes(names[nodeIndex]) ? 0 : 
-                 (nodeIndex === sourceIndex || nodeIndex === targetIndex) ? 1 : 0.15;
-        });
-      }
-      
-      // Highlight the specific edge and dim others
-      ribbonSel.style("opacity", (edgeData: any) => {
-        const hide = hiddenItems.includes(names[edgeData.source.index]) || hiddenItems.includes(names[edgeData.target.index]);
-        if (hide) return 0;
-        return (Number(edgeData.source.index) === sourceIndex && Number(edgeData.target.index) === targetIndex) ? 1 : 0.2;
-      });
-    })
-    .on("mouseout", resetHighlight);
+    // 添加鼠标离开重置效果
+    group.on("mouseout", resetHighlight);
 
     // Cleanup function
     return () => {
