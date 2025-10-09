@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAMP Website User Manual</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .code-block {
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 0.375rem;
+            padding: 1rem;
+            font-family: 'Courier New', monospace;
+            font-size: 0.875rem;
+            overflow-x: auto;
+        }
+        .highlight {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 0.375rem;
+            padding: 0.75rem;
+            margin: 0.5rem 0;
+        }
+        .warning {
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            border-radius: 0.375rem;
+            padding: 0.75rem;
+            margin: 0.5rem 0;
+        }
+        .success {
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            border-radius: 0.375rem;
+            padding: 0.75rem;
+            margin: 0.5rem 0;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900">
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-6">
+                <div class="flex items-center">
+                    <h1 class="text-3xl font-bold text-gray-900">CAMP Website User Manual</h1>
+                </div>
+                <div class="text-sm text-gray-500">
+                    Version 1.0 | Last Updated: 2025
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex space-x-8 py-4">
+                <a href="#overview" class="text-gray-600 hover:text-gray-900 font-medium">Overview</a>
+                <a href="#for-developers" class="text-gray-600 hover:text-gray-900 font-medium">For Developers</a>
+                <a href="#for-users" class="text-gray-600 hover:text-gray-900 font-medium">For Users</a>
+                <a href="#data-management" class="text-gray-600 hover:text-gray-900 font-medium">Data Management</a>
+                <a href="#troubleshooting" class="text-gray-600 hover:text-gray-900 font-medium">Troubleshooting</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        
+        <!-- Overview Section -->
+        <section id="overview" class="mb-12">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6">Overview</h2>
+            <div class="bg-white rounded-lg shadow-sm p-6">
+                <p class="text-lg text-gray-700 mb-4">
+                    The CAMP (Center for Entrepreneurial and Financial Studies) website is a modern, responsive multi-page application built with React, Tailwind CSS, and Relume UI components. This manual provides comprehensive guidance for both developers and end-users on how to effectively use and maintain the website.
+                </p>
+                
+                <div class="grid md:grid-cols-2 gap-6 mt-6">
+                    <div class="bg-blue-50 p-4 rounded-lg">
+                        <h3 class="font-semibold text-blue-900 mb-2">🌐 Website Features</h3>
+                        <ul class="text-blue-800 space-y-1">
+                            <li>• Multi-page application (Home, Projects, Team, Contact)</li>
+                            <li>• Responsive design for all devices</li>
+                            <li>• Dynamic content management via CSV files</li>
+                            <li>• Modern UI with smooth animations</li>
+                            <li>• Professional research presentation</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-green-50 p-4 rounded-lg">
+                        <h3 class="font-semibold text-green-900 mb-2">🛠 Technical Stack</h3>
+                        <ul class="text-green-800 space-y-1">
+                            <li>• React 18 with modern hooks</li>
+                            <li>• Tailwind CSS for styling</li>
+                            <li>• Relume UI components</li>
+                            <li>• React Router for navigation</li>
+                            <li>• Framer Motion for animations</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- For Developers Section -->
+        <section id="for-developers" class="mb-12">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6">For Developers</h2>
+            
+            <div class="space-y-8">
+                <!-- Project Architecture -->
+                <div class="bg-white rounded-lg shadow-sm p-6">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Project Architecture</h3>
+                    <p class="text-gray-700 mb-4">
+                        This project is built on React with HTML, CSS, and utilizes Relume-supported libraries for modern UI components. The architecture follows a component-based approach with clear separation of concerns.
+                    </p>
+                    
+                    <div class="code-block">
+<pre>📁 Project Structure:
+├── src/
+│   ├── components/          # React components
+│   │   ├── home/           # Homepage components
+│   │   ├── project/        # Individual project pages
+│   │   ├── projects/       # Projects listing page
+│   │   ├── team/           # Team page components
+│   │   └── contact/        # Contact page components
+│   ├── utils/              # Utility functions
+│   │   ├── projectData.js  # Project data management
+│   │   └── teamData.js     # Team data management
+│   └── App.jsx             # Main application
+├── public/
+│   ├── data/               # CSV data files
+│   │   ├── projects.csv    # Project information
+│   │   └── team.csv        # Team member information
+│   └── images/             # Image assets
+└── package.json            # Dependencies and scripts</pre>
+                    </div>
+                </div>
+
+                <!-- Development Setup -->
+                <div class="bg-white rounded-lg shadow-sm p-6">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Development Setup</h3>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <h4 class="font-semibold text-gray-800 mb-2">Prerequisites</h4>
+                            <ul class="text-gray-700 space-y-1 ml-4">
+                                <li>• Node.js 18+ installed</li>
+                                <li>• npm package manager</li>
+                                <li>• Git for version control</li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <h4 class="font-semibold text-gray-800 mb-2">Installation Steps</h4>
+                            <div class="code-block">
+<pre># 1. Clone the repository
+git clone [repository-url]
+cd CAMP_website
+
+# 2. Install dependencies
+npm install
+
+# 3. Start development server
+npm run dev
+
+# 4. Open browser
+# Navigate to http://localhost:5173</pre>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h4 class="font-semibold text-gray-800 mb-2">Available Scripts</h4>
+                            <div class="code-block">
+<pre>npm run dev      # Start development server
+npm run build    # Build for production
+npm run preview  # Preview production build
+npm run lint     # Run ESLint</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Key Dependencies -->
+                <div class="bg-white rounded-lg shadow-sm p-6">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Key Dependencies</h3>
+                    
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <h4 class="font-semibold text-gray-800 mb-2">Core Dependencies</h4>
+                            <ul class="text-gray-700 space-y-1 text-sm">
+                                <li>• <strong>React 18</strong> - UI framework</li>
+                                <li>• <strong>React Router DOM</strong> - Client-side routing</li>
+                                <li>• <strong>Tailwind CSS</strong> - Utility-first CSS</li>
+                                <li>• <strong>Framer Motion</strong> - Animation library</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-semibold text-gray-800 mb-2">Relume Components</h4>
+                            <ul class="text-gray-700 space-y-1 text-sm">
+                                <li>• <strong>@relume_io/relume-ui</strong> - UI components</li>
+                                <li>• <strong>@relume_io/relume-tailwind</strong> - Tailwind utilities</li>
+                                <li>• <strong>relume-icons</strong> - Icon library</li>
+                                <li>• <strong>D3.js</strong> - Data visualization</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- For Users Section -->
+        <section id="for-users" class="mb-12">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6">For Users</h2>
+            
+            <div class="space-y-8">
+                <!-- Adding New Projects -->
+                <div class="bg-white rounded-lg shadow-sm p-6">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Adding New Projects</h3>
+                    
+                    <div class="highlight">
+                        <strong>📋 Quick Guide:</strong> To add a new project, edit the <code>public/data/projects.csv</code> file following the existing format and examples. The system automatically reads CSV files and updates the website content dynamically.
+                    </div>
+
+                    <div class="space-y-4">
+                        <div>
+                            <h4 class="font-semibold text-gray-800 mb-2">Step-by-Step Process</h4>
+                            <ol class="list-decimal list-inside text-gray-700 space-y-2">
+                                <li><strong>Open the CSV file:</strong> Navigate to <code>public/data/projects.csv</code></li>
+                                <li><strong>Study existing examples:</strong> Review the current project entries to understand the format</li>
+                                <li><strong>Add new row:</strong> Create a new row with all required fields</li>
+                                <li><strong>Fill in details:</strong> Complete all fields with accurate information</li>
+                                <li><strong>Check spelling:</strong> Ensure no typos or formatting errors</li>
+                                <li><strong>Save the file:</strong> The website will automatically update</li>
+                                <li><strong>Refresh browser:</strong> View the changes on the website</li>
+                            </ol>
+                        </div>
+
+                        <div>
+                            <h4 class="font-semibold text-gray-800 mb-2">Complete Field List</h4>
+                            <div class="code-block">
+<pre>Project ID,Title,Description,Short Description,Researchers,
+Asset Class,Data Used,Advanced Method,Tags,
+Content Paragraph 1,Content Paragraph 2,Content Paragraph 3,
+Introduction,Methodology,Key Findings,Policy Implications,
+Conclusion,References,Appendices,Author Note</pre>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h4 class="font-semibold text-gray-800 mb-2">Field Descriptions & Special Requirements</h4>
+                            <div class="space-y-3">
+                                <div class="bg-gray-50 p-3 rounded">
+                                    <h5 class="font-medium text-gray-800">Content Fields (Support Rich Text)</h5>
+                                    <ul class="text-sm text-gray-700 space-y-1">
+                                        <li>• <strong>Introduction:</strong> Project introduction section, supports multiple paragraphs</li>
+                                        <li>• <strong>Methodology:</strong> Research methodology section, supports lists and paragraphs</li>
+                                        <li>• <strong>Key Findings:</strong> Main research findings, supports multiple paragraphs</li>
+                                        <li>• <strong>Policy Implications:</strong> Policy impact analysis, supports paragraph format</li>
+                                        <li>• <strong>Conclusion:</strong> Research conclusions, supports paragraph format</li>
+                                        <li>• <strong>References:</strong> Academic references, supports multiple lines</li>
+                                        <li>• <strong>Appendices:</strong> Supporting materials, supports list format</li>
+                                        <li>• <strong>Author Note:</strong> Author information, supports links and additional notes</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="warning">
+                            <strong>⚠️ Critical Requirements:</strong>
+                            <ul class="mt-2 space-y-1">
+                                <li>• <strong>File Encoding:</strong> Ensure CSV file uses UTF-8 encoding</li>
+                                <li>• <strong>Unique IDs:</strong> Use unique Project IDs (increment from existing numbers)</li>
+                                <li>• <strong>Comma Handling:</strong> Fields containing commas must be wrapped in double quotes</li>
+                                <li>• <strong>Special Characters:</strong> Fields with quotes or line breaks need double quote wrapping</li>
+                                <li>• <strong>Researcher Names:</strong> Must match exactly with team member names in team.csv</li>
+                                <li>• <strong>Field Completeness:</strong> All required fields should be filled</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Adding Team Members -->
+                <div class="bg-white rounded-lg shadow-sm p-6">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Adding Team Members</h3>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <h4 class="font-semibold text-gray-800 mb-2">Process Overview</h4>
+                            <ol class="list-decimal list-inside text-gray-700 space-y-2">
+                                <li><strong>Edit team CSV:</strong> Open <code>public/data/team.csv</code></li>
+                                <li><strong>Add member information:</strong> Fill in all required fields</li>
+                                <li><strong>Add photo:</strong> Place image file in <code>public/images/</code> directory</li>
+                                <li><strong>Update CSV reference:</strong> Reference the image file in the CSV</li>
+                                <li><strong>Save and refresh:</strong> Changes appear automatically</li>
+                            </ol>
+                        </div>
+
+                        <div>
+                            <h4 class="font-semibold text-gray-800 mb-2">Complete Field List</h4>
+                            <div class="code-block">
+<pre>Person ID,Name,Title,Role,Description,Image,Category,
+Email,LinkedIn,Website,Research Areas,Education,Experience</pre>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h4 class="font-semibold text-gray-800 mb-2">Special Field Requirements</h4>
+                            <div class="space-y-3">
+                                <div class="bg-gray-50 p-3 rounded">
+                                    <h5 class="font-medium text-gray-800">Critical Fields</h5>
+                                    <ul class="text-sm text-gray-700 space-y-1">
+                                        <li>• <strong>Category:</strong> Must be exactly "Research Leads" or "Research Assistants"</li>
+                                        <li>• <strong>Image:</strong> Photo filename, stored in <code>public/images/</code> directory</li>
+                                        <li>• <strong>Person ID:</strong> Unique identifier (increment from existing numbers)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h4 class="font-semibold text-gray-800 mb-2">Image Requirements</h4>
+                            <ul class="text-gray-700 space-y-1">
+                                <li>• <strong>Format:</strong> JPG, PNG, or WebP</li>
+                                <li>• <strong>Size:</strong> Recommended 400x400px or square aspect ratio</li>
+                                <li>• <strong>Location:</strong> Save in <code>public/images/</code> directory</li>
+                                <li>• <strong>Naming:</strong> Use descriptive names (e.g., <code>john-doe.jpg</code>)</li>
+                                <li>• <strong>Reference:</strong> Use <code>/images/filename.ext</code> in CSV</li>
+                            </ul>
+                        </div>
+
+                        <div class="success">
+                            <strong>✅ Category Options:</strong>
+                            <ul class="mt-2 space-y-1">
+                                <li>• <strong>"Research Leads"</strong> - For principal researchers and professors</li>
+                                <li>• <strong>"Research Assistants"</strong> - For research assistants and project managers</li>
+                            </ul>
+                        </div>
+
+                        <div class="warning">
+                            <strong>⚠️ Data Consistency Requirements:</strong>
+                            <ul class="mt-2 space-y-1">
+                                <li>• <strong>File Encoding:</strong> Ensure CSV file uses UTF-8 encoding</li>
+                                <li>• <strong>Unique IDs:</strong> Person IDs must be unique across all team members</li>
+                                <li>• <strong>Image Files:</strong> Referenced image files must exist in the images directory</li>
+                                <li>• <strong>Name Matching:</strong> Names used in projects.csv must match exactly with team.csv</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Practical Use Examples -->
+                <div class="bg-white rounded-lg shadow-sm p-6">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Practical Use Examples</h3>
+                    
+                    <div class="space-y-8">
+                        <!-- Detailed Example: Adding New Team Member -->
+                        <div class="border-l-4 border-green-500 pl-6 bg-green-50/30 rounded-r-lg p-6">
+                            <h4 class="text-xl font-semibold text-green-800 mb-4">📋 Detailed Example: Adding a New Team Member with Photo</h4>
+                            <p class="text-gray-700 mb-4">Let's add "Dr. Maria Rodriguez" as a new Research Assistant to the CAMP team.</p>
+                            
+                            <div class="space-y-4">
+                                <div class="bg-white p-4 rounded-lg border border-green-200">
+                                    <h5 class="font-semibold text-green-800 mb-3">Step 1: Prepare the Photo</h5>
+                                    <div class="space-y-3">
+                                        <div class="bg-gray-50 p-3 rounded">
+                                            <h6 class="font-medium text-gray-800 mb-2">Photo Requirements:</h6>
+                                            <ul class="text-sm text-gray-700 space-y-1">
+                                                <li>• <strong>Format:</strong> JPG, PNG, or WebP</li>
+                                                <li>• <strong>Size:</strong> 400x400 pixels (square aspect ratio recommended)</li>
+                                                <li>• <strong>Quality:</strong> High resolution, clear and professional</li>
+                                                <li>• <strong>File Size:</strong> Under 500KB for optimal loading</li>
+                                                <li>• <strong>Background:</strong> Clean, professional background</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="bg-blue-50 p-3 rounded">
+                                            <h6 class="font-medium text-blue-800 mb-2">File Naming Convention:</h6>
+                                            <div class="code-block">
+<pre># Recommended naming format:
+maria-rodriguez.jpg
+
+# Alternative formats:
+maria_rodriguez.jpg
+dr-maria-rodriguez.jpg
+
+# Avoid:
+Maria Rodriguez.jpg (spaces)
+maria.rodriguez.jpg (dots in filename)
+MARIA_RODRIGUEZ.JPG (all caps)</pre>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="bg-yellow-50 p-3 rounded">
+                                            <h6 class="font-medium text-yellow-800 mb-2">File Location:</h6>
+                                            <div class="code-block">
+<pre># Save the photo in:
+/Users/gutianhao/Downloads/CAMP_website/public/images/maria-rodriguez.jpg
+
+# Verify the file exists by checking:
+ls public/images/maria-rodriguez.jpg</pre>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="bg-white p-4 rounded-lg border border-green-200">
+                                    <h5 class="font-semibold text-green-800 mb-3">Step 2: Check Current Team Data</h5>
+                                    <div class="bg-gray-50 p-3 rounded mb-3">
+                                        <h6 class="font-medium text-gray-800 mb-2">Current team.csv structure:</h6>
+                                        <div class="code-block">
+<pre>Person ID,Name,Title,Role,Description,Image,Category,Email,LinkedIn,Website,Research Areas,Education,Experience
+1,Dr. Sara Boni,Research Lead,Research Lead,"Leading research in entrepreneurial finance...",/images/sara.png,Research Leads,sara.boni@tum.de,https://linkedin.com/in/sara-boni,https://tum.de,"Entrepreneurial Finance,Private Equity,AI Applications","PhD in Finance,TUM School of Management","Professor at TUM since 2015,Expert in investment decision-making"
+2,Dr. Max Sina Knicker,Research Lead,Research Lead,"I develop models and strategies...",/images/max.png,Research Leads,max.knicker@tum.de,https://linkedin.com/in/max-knicker,https://tum.de,"Liquidity Modeling,Alternative Investments,Portfolio Management","PhD in Finance,TUM School of Management","Expert in alternatives markets,Develops liquidity strategies"
+...
+6,Philipp Bockshecker,Research Assistant,Research Assistant,"Contributing a quantitative perspective...",/images/phillip.jpg,Research Assistants,philipp.bockshecker@tum.de,,,"Quantitative Analysis,Performance Persistence","M.Sc. in Quantitative Finance","Research Assistant at CEFS,Quantitative analysis expert"</pre>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="bg-blue-50 p-3 rounded">
+                                        <h6 class="font-medium text-blue-800 mb-2">Key Observations:</h6>
+                                        <ul class="text-sm text-blue-700 space-y-1">
+                                            <li>• Current highest Person ID is 6 (Philipp Bockshecker)</li>
+                                            <li>• Next Person ID should be 7</li>
+                                            <li>• Category must be exactly "Research Assistants" (case-sensitive)</li>
+                                            <li>• Image path format: /images/filename.ext</li>
+                                            <li>• All fields are required, use empty string "" for missing optional data</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="bg-white p-4 rounded-lg border border-green-200">
+                                    <h5 class="font-semibold text-green-800 mb-3">Step 3: Create the CSV Entry</h5>
+                                    <div class="bg-gray-50 p-3 rounded mb-3">
+                                        <h6 class="font-medium text-gray-800 mb-2">New team member entry:</h6>
+                                        <div class="code-block">
+<pre>7,"Dr. Maria Rodriguez","Research Assistant","Research Assistant","Specializes in behavioral finance and market psychology with expertise in investor sentiment analysis and cognitive bias research. Her work focuses on understanding how psychological factors influence financial decision-making in both individual and institutional contexts.","/images/maria-rodriguez.jpg","Research Assistants","maria.rodriguez@tum.de","https://linkedin.com/in/maria-rodriguez","https://tum.de","Behavioral Finance,Market Psychology,Investor Sentiment","PhD in Behavioral Economics,TUM School of Management","Research Assistant at CAMP since 2024,Expert in behavioral finance and market psychology"</pre>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="grid md:grid-cols-2 gap-4">
+                                        <div class="bg-green-50 p-3 rounded">
+                                            <h6 class="font-medium text-green-800 mb-2">✅ Field Breakdown:</h6>
+                                            <ul class="text-sm text-green-700 space-y-1">
+                                                <li>• <strong>Person ID:</strong> 7 (next available)</li>
+                                                <li>• <strong>Name:</strong> "Dr. Maria Rodriguez"</li>
+                                                <li>• <strong>Title:</strong> "Research Assistant"</li>
+                                                <li>• <strong>Role:</strong> "Research Assistant"</li>
+                                                <li>• <strong>Description:</strong> Professional bio with expertise</li>
+                                                <li>• <strong>Image:</strong> "/images/maria-rodriguez.jpg"</li>
+                                                <li>• <strong>Category:</strong> "Research Assistants"</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="bg-blue-50 p-3 rounded">
+                                            <h6 class="font-medium text-blue-800 mb-2">📧 Contact Information:</h6>
+                                            <ul class="text-sm text-blue-700 space-y-1">
+                                                <li>• <strong>Email:</strong> maria.rodriguez@tum.de</li>
+                                                <li>• <strong>LinkedIn:</strong> https://linkedin.com/in/maria-rodriguez</li>
+                                                <li>• <strong>Website:</strong> https://tum.de</li>
+                                                <li>• <strong>Research Areas:</strong> Behavioral Finance,Market Psychology,Investor Sentiment</li>
+                                                <li>• <strong>Education:</strong> PhD in Behavioral Economics,TUM School of Management</li>
+                                                <li>• <strong>Experience:</strong> Research Assistant at CAMP since 2024,Expert in behavioral finance</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="bg-white p-4 rounded-lg border border-green-200">
+                                    <h5 class="font-semibold text-green-800 mb-3">Step 4: Add to team.csv File</h5>
+                                    <div class="space-y-3">
+                                        <div class="bg-gray-50 p-3 rounded">
+                                            <h6 class="font-medium text-gray-800 mb-2">Complete updated team.csv file:</h6>
+                                            <div class="code-block">
+<pre>Person ID,Name,Title,Role,Description,Image,Category,Email,LinkedIn,Website,Research Areas,Education,Experience
+1,Dr. Sara Boni,Research Lead,Research Lead,"Leading research in entrepreneurial finance and private equity, with expertise in AI applications for investment decision-making and market analysis. Professor at TUM School of Management since 2015.",/images/sara.png,Research Leads,sara.boni@tum.de,https://linkedin.com/in/sara-boni,https://tum.de,"Entrepreneurial Finance,Private Equity,AI Applications","PhD in Finance,TUM School of Management","Professor at TUM since 2015,Expert in investment decision-making"
+2,Dr. Max Sina Knicker,Research Lead,Research Lead,"I develop models and strategies to help institutional investors navigate the liquidity challenges of alternatives markets, making alternative investments more predictable, accessible, and integrable into global portfolios.",/images/max.png,Research Leads,max.knicker@tum.de,https://linkedin.com/in/max-knicker,https://tum.de,"Liquidity Modeling,Alternative Investments,Portfolio Management","PhD in Finance,TUM School of Management","Expert in alternatives markets,Develops liquidity strategies"
+3,Nicolas Pardon M.Sc,Research Assistant,Research Assistant,"Passionate about private equity, he leads innovative research initiatives.",/images/nicolas.png,Research Assistants,nicolas.pardon@tum.de,,,"Private Equity,Research Innovation","M.Sc. in Finance","Research Assistant at CEFS,Focus on private equity"
+4,Julius Maisch M.Sc,Research Assistant,Research Assistant,"Specialises in data-driven insights to enhance investment strategies.",/images/Julius.png,Research Assistants,julius.maisch@tum.de,,,"Data Analysis,Investment Strategies","M.Sc. in Data Science","Research Assistant at CEFS,Data analysis specialist"
+5,Laura Becker,Project Manager,Project Manager,"Coordinates projects to ensure timely and effective delivery.",/images/Laura.png,Research Assistants,laura.becker@tum.de,,,"Project Management,Coordination","M.Sc. in Management","Project Manager at CEFS,Ensures project delivery"
+6,Philipp Bockshecker,Research Assistant,Research Assistant,"Contributing a quantitative perspective on performance persistence in private equity and its implications for investment decisions.",/images/phillip.jpg,Research Assistants,philipp.bockshecker@tum.de,,,"Quantitative Analysis,Performance Persistence","M.Sc. in Quantitative Finance","Research Assistant at CEFS,Quantitative analysis expert"
+7,"Dr. Maria Rodriguez","Research Assistant","Research Assistant","Specializes in behavioral finance and market psychology with expertise in investor sentiment analysis and cognitive bias research. Her work focuses on understanding how psychological factors influence financial decision-making in both individual and institutional contexts.","/images/maria-rodriguez.jpg","Research Assistants","maria.rodriguez@tum.de","https://linkedin.com/in/maria-rodriguez","https://tum.de","Behavioral Finance,Market Psychology,Investor Sentiment","PhD in Behavioral Economics,TUM School of Management","Research Assistant at CAMP since 2024,Expert in behavioral finance and market psychology"</pre>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="bg-yellow-50 p-3 rounded">
+                                            <h6 class="font-medium text-yellow-800 mb-2">⚠️ Important Notes:</h6>
+                                            <ul class="text-sm text-yellow-700 space-y-1">
+                                                <li>• Save the file with UTF-8 encoding</li>
+                                                <li>• Ensure no extra spaces or characters at the end of lines</li>
+                                                <li>• Verify the image file exists before saving</li>
+                                                <li>• Test the changes by refreshing the website</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="bg-white p-4 rounded-lg border border-green-200">
+                                    <h5 class="font-semibold text-green-800 mb-3">Step 5: Verification and Testing</h5>
+                                    <div class="space-y-3">
+                                        <div class="bg-green-50 p-3 rounded">
+                                            <h6 class="font-medium text-green-800 mb-2">✅ Verification Checklist:</h6>
+                                            <ul class="text-sm text-green-700 space-y-1">
+                                                <li>□ Photo file exists at: public/images/maria-rodriguez.jpg</li>
+                                                <li>□ CSV file saved with UTF-8 encoding</li>
+                                                <li>□ Person ID 7 is unique and not used elsewhere</li>
+                                                <li>□ Category is exactly "Research Assistants" (case-sensitive)</li>
+                                                <li>□ Image path is "/images/maria-rodriguez.jpg" (with leading slash)</li>
+                                                <li>□ All required fields are filled</li>
+                                                <li>□ No syntax errors in CSV format</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="bg-blue-50 p-3 rounded">
+                                            <h6 class="font-medium text-blue-800 mb-2">🔄 Testing Steps:</h6>
+                                            <ol class="text-sm text-blue-700 space-y-1">
+                                                <li>1. Save the team.csv file</li>
+                                                <li>2. Refresh the website (Ctrl+F5 or Cmd+Shift+R)</li>
+                                                <li>3. Navigate to the Team page</li>
+                                                <li>4. Verify Dr. Maria Rodriguez appears in the Research Assistants section</li>
+                                                <li>5. Check that her photo displays correctly</li>
+                                                <li>6. Verify all her information is displayed properly</li>
+                                            </ol>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Detailed Example: Adding New Project -->
+                        <div class="border-l-4 border-blue-500 pl-6 bg-blue-50/30 rounded-r-lg p-6">
+                            <h4 class="text-xl font-semibold text-blue-800 mb-4">📋 Detailed Example: Adding a New Research Project</h4>
+                            <p class="text-gray-700 mb-4">Let's add a comprehensive research project about "Sustainable Finance and Climate Risk Assessment" to the CAMP website.</p>
+                            
+                            <div class="space-y-4">
+                                <div class="bg-white p-4 rounded-lg border border-blue-200">
+                                    <h5 class="font-semibold text-blue-800 mb-3">Step 1: Analyze Current Project Structure</h5>
+                                    <div class="space-y-3">
+                                        <div class="bg-gray-50 p-3 rounded">
+                                            <h6 class="font-medium text-gray-800 mb-2">Current projects.csv structure:</h6>
+                                            <div class="code-block">
+<pre>Project ID,Title,Description,Short Description,Researchers,Asset Class,Data Used,Advanced Method,Tags,Content Paragraph 1,Content Paragraph 2,Content Paragraph 3,Introduction,Methodology,Key Findings,Policy Implications,Conclusion,References,Appendices,Author Note
+1,Agent-Based Modelling for Liquidity Forecasting,"This research focuses on developing agent-based models for liquidity forecasting in financial markets...","This research focuses on developing agent-based models for liquidity forecasting in financial markets...",Nicki Pardon Max Knicker,Financial Markets,Market microstructure data trading behavior data,Agent-Based Modelling Computational Simulation,"Liquidity Forecasting,Agent-Based Modelling,Market Microstructure","Our research focuses on developing agent-based models...","The study employs agent-based modelling techniques...","This research contributes to the understanding of market liquidity dynamics...","The rapid advancement in hydraulic fracturing...","The authors employ a time-varying parameter factor-augmented vector autoregressive (FAVAR) model...","The analysis finds that an increase in the oil price...","Bjørnland and Skretting's findings have significant implications...","Bjørnland and Skretting's 2024 paper offers valuable insights...","Bjørnland, H. C., & Skretting, J. (2024). The shale oil boom and the US economy...","Appendix A: TVP-VAR Model Details...","This analysis aims to synthesize and articulate the core findings..."</pre>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="bg-blue-50 p-3 rounded">
+                                            <h6 class="font-medium text-blue-800 mb-2">Key Observations:</h6>
+                                            <ul class="text-sm text-blue-700 space-y-1">
+                                                <li>• Current highest Project ID is 12 (Financial Regulation and Compliance)</li>
+                                                <li>• Next Project ID should be 13</li>
+                                                <li>• Researcher names must match exactly with team.csv</li>
+                                                <li>• All content fields support rich text and multiple paragraphs</li>
+                                                <li>• Tags should be comma-separated without spaces after commas</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="bg-white p-4 rounded-lg border border-blue-200">
+                                    <h5 class="font-semibold text-blue-800 mb-3">Step 2: Prepare Project Information</h5>
+                                    <div class="space-y-3">
+                                        <div class="bg-gray-50 p-3 rounded">
+                                            <h6 class="font-medium text-gray-800 mb-2">Project Details:</h6>
+                                            <ul class="text-sm text-gray-700 space-y-1">
+                                                <li>• <strong>Title:</strong> "Sustainable Finance and Climate Risk Assessment"</li>
+                                                <li>• <strong>Researchers:</strong> Dr. Sara Boni, Dr. Max Knicker, Dr. Maria Rodriguez</li>
+                                                <li>• <strong>Asset Class:</strong> Sustainable Finance</li>
+                                                <li>• <strong>Data Used:</strong> ESG data, climate risk metrics, financial performance data</li>
+                                                <li>• <strong>Advanced Method:</strong> Machine Learning, ESG Analysis, Climate Modeling</li>
+                                                <li>• <strong>Tags:</strong> Sustainable Finance,Climate Risk,ESG Integration,Machine Learning</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="bg-yellow-50 p-3 rounded">
+                                            <h6 class="font-medium text-yellow-800 mb-2">⚠️ Researcher Name Verification:</h6>
+                                            <p class="text-sm text-yellow-700">Before proceeding, verify these names exist in team.csv:</p>
+                                            <ul class="text-sm text-yellow-700 space-y-1 mt-1">
+                                                <li>• "Dr. Sara Boni" ✓ (Person ID 1)</li>
+                                                <li>• "Dr. Max Sina Knicker" ✓ (Person ID 2)</li>
+                                                <li>• "Dr. Maria Rodriguez" ✓ (Person ID 7 - just added)</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="bg-white p-4 rounded-lg border border-blue-200">
+                                    <h5 class="font-semibold text-blue-800 mb-3">Step 3: Create Comprehensive Project Content</h5>
+                                    <div class="space-y-3">
+                                        <div class="bg-gray-50 p-3 rounded">
+                                            <h6 class="font-medium text-gray-800 mb-2">Complete Project Entry:</h6>
+                                            <div class="code-block">
+<pre>13,"Sustainable Finance and Climate Risk Assessment","This research develops comprehensive frameworks for integrating climate risk factors into sustainable finance decision-making processes. Using advanced machine learning techniques and ESG data analysis, we create predictive models for climate-related financial risks and develop strategies for climate-resilient investment portfolios.","Advanced climate risk assessment using ML and ESG data for sustainable finance.","Dr. Sara Boni,Dr. Max Sina Knicker,Dr. Maria Rodriguez","Sustainable Finance","ESG data, climate risk metrics, financial performance data, carbon footprint data","Machine Learning,ESG Analysis,Climate Modeling","Sustainable Finance,Climate Risk,ESG Integration,Machine Learning","Our research focuses on developing comprehensive frameworks for integrating climate risk factors into sustainable finance decision-making processes. The study addresses the growing need for financial institutions to understand and manage climate-related risks in their investment portfolios.","The study employs advanced machine learning algorithms including random forest models and neural networks to analyze ESG data and climate risk metrics. We utilize time-series analysis to identify patterns in climate-related financial performance and develop predictive models for climate risk assessment. The methodology includes: 1) Data collection and preprocessing of ESG datasets, 2) Feature engineering for climate risk indicators, 3) Machine learning model development and validation, 4) Portfolio optimization under climate constraints.","Key findings reveal significant correlations between climate risk factors and financial performance across different asset classes. Our models achieve 78% accuracy in predicting climate-related financial risks. The research identifies that companies with strong ESG performance demonstrate 15% better resilience to climate-related financial shocks. Additionally, we find that climate risk integration can improve portfolio risk-adjusted returns by up to 12% over traditional approaches.","The research has important implications for financial regulation and sustainable finance policy. Our findings suggest that mandatory climate risk disclosure could significantly improve market efficiency and investor protection. The study recommends the development of standardized climate risk metrics and the integration of climate factors into existing risk management frameworks. Policy makers should consider climate risk as a systemic financial risk requiring coordinated regulatory response.","This research contributes significantly to the field of sustainable finance by providing evidence-based frameworks for climate risk assessment. The study demonstrates that integrating climate factors into financial decision-making is not only environmentally responsible but also financially beneficial. Our findings provide valuable insights for investors, financial institutions, and policymakers seeking to build climate-resilient financial systems.","Johnson, A. et al. (2024). Climate Risk in Financial Markets: A Machine Learning Approach. Journal of Sustainable Finance. Smith, B. & Wilson, C. (2023). ESG Integration and Portfolio Performance. Environmental Finance Review. Brown, D. (2024). Climate Modeling for Financial Risk Assessment. Climate Economics Quarterly.","Appendix A: Machine Learning Model Specifications - Detailed description of algorithms used. Appendix B: ESG Data Sources - Complete list of data providers and metrics. Appendix C: Climate Risk Metrics - Definitions and calculation methods. Appendix D: Portfolio Optimization Results - Detailed performance analysis.","This research was conducted as part of the CAMP initiative's focus on sustainable finance. The project received funding from the European Union's Horizon 2020 program. For more information about our sustainable finance research, visit: https://camp-sustainable-finance.tum.de"</pre>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="grid md:grid-cols-2 gap-4">
+                                            <div class="bg-green-50 p-3 rounded">
+                                                <h6 class="font-medium text-green-800 mb-2">✅ Content Structure:</h6>
+                                                <ul class="text-sm text-green-700 space-y-1">
+                                                    <li>• <strong>Introduction:</strong> Comprehensive project overview</li>
+                                                    <li>• <strong>Methodology:</strong> Detailed research approach with numbered steps</li>
+                                                    <li>• <strong>Key Findings:</strong> Specific results with percentages and metrics</li>
+                                                    <li>• <strong>Policy Implications:</strong> Regulatory and policy recommendations</li>
+                                                    <li>• <strong>Conclusion:</strong> Summary of contributions and impact</li>
+                                                </ul>
+                                            </div>
+                                            
+                                            <div class="bg-blue-50 p-3 rounded">
+                                                <h6 class="font-medium text-blue-800 mb-2">📚 Supporting Materials:</h6>
+                                                <ul class="text-sm text-blue-700 space-y-1">
+                                                    <li>• <strong>References:</strong> Academic citations with proper formatting</li>
+                                                    <li>• <strong>Appendices:</strong> Detailed technical documentation</li>
+                                                    <li>• <strong>Author Note:</strong> Funding information and additional resources</li>
+                                                    <li>• <strong>Links:</strong> External resources and project website</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="bg-white p-4 rounded-lg border border-blue-200">
+                                    <h5 class="font-semibold text-blue-800 mb-3">Step 4: Add to projects.csv File</h5>
+                                    <div class="space-y-3">
+                                        <div class="bg-gray-50 p-3 rounded">
+                                            <h6 class="font-medium text-gray-800 mb-2">Updated projects.csv (showing last few entries):</h6>
+                                            <div class="code-block">
+<pre>...
+11,Quantitative Trading Strategies,"This research focuses on developing quantitative trading strategies using advanced mathematical models and algorithmic approaches. We analyze market patterns and develop systematic trading systems for various asset classes.","This research focuses on developing quantitative trading strategies using advanced mathematical models and algorithmic approaches. We analyze market patterns and develop systematic trading systems for various asset classes.",Dr. Sara Boni Laura Becker,Quantitative Trading,Market data trading signals,Algorithmic Trading Quantitative Analysis,"Quantitative Trading,Algorithmic Strategies,Market Analysis","Our research focuses on developing quantitative trading strategies using advanced mathematical models and algorithmic approaches. We analyze market patterns and develop systematic trading systems for various asset classes.","The study employs sophisticated mathematical models to develop algorithmic trading strategies that can identify market opportunities and execute trades systematically. This approach allows us to develop robust trading systems with controlled risk.","This research contributes to the understanding of quantitative trading methodologies and suggests potential applications for improving trading performance. The algorithmic approach could significantly enhance our ability to identify trading opportunities and manage execution risk."
+12,Financial Regulation and Compliance,"This research examines the impact of financial regulations on market behavior and investment strategies. We analyze regulatory changes, compliance requirements, and their effects on financial institutions and market participants.","This research examines the impact of financial regulations on market behavior and investment strategies. We analyze regulatory changes, compliance requirements, and their effects on financial institutions and market participants.",Dr. Max Knicker Nicolas Pardon,Financial Regulation,Regulatory data compliance reports,Regulatory Analysis Compliance Research,"Financial Regulation,Compliance,Market Impact","Our research examines the impact of financial regulations on market behavior and investment strategies. We analyze regulatory changes, compliance requirements, and their effects on financial institutions and market participants.","The study employs comprehensive analysis of regulatory frameworks to understand their impact on financial markets and institutions. This approach allows us to develop strategies for navigating regulatory changes and ensuring compliance.","This research contributes to the understanding of financial regulation dynamics and suggests potential applications for improving regulatory compliance and risk management. The regulatory approach could significantly enhance our ability to adapt to changing regulatory environments and maintain compliance standards."
+13,"Sustainable Finance and Climate Risk Assessment","This research develops comprehensive frameworks for integrating climate risk factors into sustainable finance decision-making processes. Using advanced machine learning techniques and ESG data analysis, we create predictive models for climate-related financial risks and develop strategies for climate-resilient investment portfolios.","Advanced climate risk assessment using ML and ESG data for sustainable finance.","Dr. Sara Boni,Dr. Max Sina Knicker,Dr. Maria Rodriguez","Sustainable Finance","ESG data, climate risk metrics, financial performance data, carbon footprint data","Machine Learning,ESG Analysis,Climate Modeling","Sustainable Finance,Climate Risk,ESG Integration,Machine Learning","Our research focuses on developing comprehensive frameworks for integrating climate risk factors into sustainable finance decision-making processes. The study addresses the growing need for financial institutions to understand and manage climate-related risks in their investment portfolios.","The study employs advanced machine learning algorithms including random forest models and neural networks to analyze ESG data and climate risk metrics. We utilize time-series analysis to identify patterns in climate-related financial performance and develop predictive models for climate risk assessment. The methodology includes: 1) Data collection and preprocessing of ESG datasets, 2) Feature engineering for climate risk indicators, 3) Machine learning model development and validation, 4) Portfolio optimization under climate constraints.","Key findings reveal significant correlations between climate risk factors and financial performance across different asset classes. Our models achieve 78% accuracy in predicting climate-related financial risks. The research identifies that companies with strong ESG performance demonstrate 15% better resilience to climate-related financial shocks. Additionally, we find that climate risk integration can improve portfolio risk-adjusted returns by up to 12% over traditional approaches.","The research has important implications for financial regulation and sustainable finance policy. Our findings suggest that mandatory climate risk disclosure could significantly improve market efficiency and investor protection. The study recommends the development of standardized climate risk metrics and the integration of climate factors into existing risk management frameworks. Policy makers should consider climate risk as a systemic financial risk requiring coordinated regulatory response.","This research contributes significantly to the field of sustainable finance by providing evidence-based frameworks for climate risk assessment. The study demonstrates that integrating climate factors into financial decision-making is not only environmentally responsible but also financially beneficial. Our findings provide valuable insights for investors, financial institutions, and policymakers seeking to build climate-resilient financial systems.","Johnson, A. et al. (2024). Climate Risk in Financial Markets: A Machine Learning Approach. Journal of Sustainable Finance. Smith, B. & Wilson, C. (2023). ESG Integration and Portfolio Performance. Environmental Finance Review. Brown, D. (2024). Climate Modeling for Financial Risk Assessment. Climate Economics Quarterly.","Appendix A: Machine Learning Model Specifications - Detailed description of algorithms used. Appendix B: ESG Data Sources - Complete list of data providers and metrics. Appendix C: Climate Risk Metrics - Definitions and calculation methods. Appendix D: Portfolio Optimization Results - Detailed performance analysis.","This research was conducted as part of the CAMP initiative's focus on sustainable finance. The project received funding from the European Union's Horizon 2020 program. For more information about our sustainable finance research, visit: https://camp-sustainable-finance.tum.de"</pre>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="bg-yellow-50 p-3 rounded">
+                                            <h6 class="font-medium text-yellow-800 mb-2">⚠️ Critical Formatting Notes:</h6>
+                                            <ul class="text-sm text-yellow-700 space-y-1">
+                                                <li>• All fields with commas are wrapped in double quotes</li>
+                                                <li>• Researcher names separated by commas (no spaces after commas)</li>
+                                                <li>• Tags separated by commas (no spaces after commas)</li>
+                                                <li>• Long text fields properly quoted to handle line breaks</li>
+                                                <li>• UTF-8 encoding used for special characters</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="bg-white p-4 rounded-lg border border-blue-200">
+                                    <h5 class="font-semibold text-blue-800 mb-3">Step 5: Verification and Testing</h5>
+                                    <div class="space-y-3">
+                                        <div class="bg-green-50 p-3 rounded">
+                                            <h6 class="font-medium text-green-800 mb-2">✅ Pre-Save Verification:</h6>
+                                            <ul class="text-sm text-green-700 space-y-1">
+                                                <li>□ Project ID 13 is unique and not used elsewhere</li>
+                                                <li>□ All researcher names match exactly with team.csv entries</li>
+                                                <li>□ CSV file will be saved with UTF-8 encoding</li>
+                                                <li>□ All required fields are filled with appropriate content</li>
+                                                <li>□ No syntax errors in CSV format (proper quoting)</li>
+                                                <li>□ Tags are properly formatted (comma-separated, no spaces)</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="bg-blue-50 p-3 rounded">
+                                            <h6 class="font-medium text-blue-800 mb-2">🔄 Testing Workflow:</h6>
+                                            <ol class="text-sm text-blue-700 space-y-1">
+                                                <li>1. Save the projects.csv file with UTF-8 encoding</li>
+                                                <li>2. Refresh the website (hard refresh: Ctrl+F5 or Cmd+Shift+R)</li>
+                                                <li>3. Navigate to the Projects page</li>
+                                                <li>4. Verify "Sustainable Finance and Climate Risk Assessment" appears in the project list</li>
+                                                <li>5. Click on the project to view the detailed page</li>
+                                                <li>6. Check that all researchers are listed correctly</li>
+                                                <li>7. Verify all content sections display properly</li>
+                                                <li>8. Test that links in the Author Note work correctly</li>
+                                            </ol>
+                                        </div>
+                                        
+                                        <div class="bg-purple-50 p-3 rounded">
+                                            <h6 class="font-medium text-purple-800 mb-2">🎯 Expected Results:</h6>
+                                            <ul class="text-sm text-purple-700 space-y-1">
+                                                <li>• Project appears in the main projects listing</li>
+                                                <li>• All three researchers (Dr. Sara Boni, Dr. Max Knicker, Dr. Maria Rodriguez) are credited</li>
+                                                <li>• Content sections display with proper formatting</li>
+                                                <li>• Tags are clickable and filterable</li>
+                                                <li>• References and appendices are properly formatted</li>
+                                                <li>• Author note includes working links</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Additional Examples: Common Scenarios -->
+                        <div class="border-l-4 border-purple-500 pl-6 bg-purple-50/30 rounded-r-lg p-6">
+                            <h4 class="text-xl font-semibold text-purple-800 mb-4">📋 Additional Examples: Common Scenarios</h4>
+                            
+                            <div class="space-y-6">
+                                <!-- Example: Editing Existing Content -->
+                                <div class="bg-white p-4 rounded-lg border border-purple-200">
+                                    <h5 class="font-semibold text-purple-800 mb-3">Example: Updating Existing Project Information</h5>
+                                    <p class="text-gray-700 mb-3">Let's update the methodology section of Project ID 1 to include more advanced techniques.</p>
+                                    
+                                    <div class="space-y-3">
+                                        <div class="bg-gray-50 p-3 rounded">
+                                            <h6 class="font-medium text-gray-800 mb-2">Before (Project ID 1):</h6>
+                                            <div class="code-block">
+<pre>Methodology,"The study employs agent-based modelling techniques to capture the complex interactions between market participants and their impact on liquidity provision."</pre>
+                                            </div>
+                                        </div>
+
+                                        <div class="bg-gray-50 p-3 rounded">
+                                            <h6 class="font-medium text-gray-800 mb-2">After (Updated):</h6>
+                                            <div class="code-block">
+<pre>Methodology,"The study employs advanced agent-based modelling techniques combined with machine learning algorithms to capture the complex interactions between market participants and their impact on liquidity provision. Our approach includes: 1) Multi-agent simulation framework, 2) Deep learning integration for pattern recognition, 3) Real-time market data processing, 4) Monte Carlo simulation for risk assessment."</pre>
+                                            </div>
+                                        </div>
+
+                                        <div class="bg-blue-50 p-3 rounded">
+                                            <h6 class="font-medium text-blue-800 mb-2">💡 Pro Tips:</h6>
+                                            <ul class="text-sm text-blue-700 space-y-1">
+                                                <li>• Always backup the original CSV before making changes</li>
+                                                <li>• Use numbered lists for better readability in methodology sections</li>
+                                                <li>• Keep updates consistent with the project's overall tone</li>
+                                                <li>• Test the changes by refreshing the website</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Example: Handling Special Characters -->
+                                <div class="bg-white p-4 rounded-lg border border-purple-200">
+                                    <h5 class="font-semibold text-purple-800 mb-3">Example: Handling Special Characters and Formatting</h5>
+                                    <p class="text-gray-700 mb-3">Common issues when dealing with commas, quotes, and special characters in CSV files.</p>
+                                    
+                                    <div class="space-y-3">
+                                        <div class="bg-red-50 p-3 rounded">
+                                            <h6 class="font-medium text-red-800 mb-1">❌ Incorrect Format:</h6>
+                                            <div class="code-block">
+<pre>Description,"This research, which includes machine learning, AI, and statistical analysis, focuses on market dynamics."</pre>
+                                            </div>
+                                        </div>
+
+                                        <div class="bg-green-50 p-3 rounded">
+                                            <h6 class="font-medium text-green-800 mb-1">✅ Correct Format:</h6>
+                                            <div class="code-block">
+<pre>Description,"This research, which includes machine learning, AI, and statistical analysis, focuses on market dynamics."</pre>
+                                            </div>
+                                        </div>
+
+                                        <div class="bg-red-50 p-3 rounded">
+                                            <h6 class="font-medium text-red-800 mb-1">❌ Problem with Quotes:</h6>
+                                            <div class="code-block">
+<pre>Conclusion,"The study shows that "market efficiency" is a key factor in our analysis."</pre>
+                                            </div>
+                                        </div>
+
+                                        <div class="bg-green-50 p-3 rounded">
+                                            <h6 class="font-medium text-green-800 mb-1">✅ Solution:</h6>
+                                            <div class="code-block">
+<pre>Conclusion,"The study shows that ""market efficiency"" is a key factor in our analysis."</pre>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Content Guidelines -->
+                <div class="bg-white rounded-lg shadow-sm p-6">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Content Guidelines</h3>
+                    
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <h4 class="font-semibold text-gray-800 mb-2">Writing Best Practices</h4>
+                            <ul class="text-gray-700 space-y-1 text-sm">
+                                <li>• Use clear, professional language</li>
+                                <li>• Keep descriptions concise but informative</li>
+                                <li>• Include relevant keywords for searchability</li>
+                                <li>• Maintain consistent tone across all content</li>
+                                <li>• Proofread for grammar and spelling</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-semibold text-gray-800 mb-2">Technical Considerations</h4>
+                            <ul class="text-gray-700 space-y-1 text-sm">
+                                <li>• Use UTF-8 encoding for special characters</li>
+                                <li>• Escape commas in text with quotes</li>
+                                <li>• Keep URLs and links properly formatted</li>
+                                <li>• Test content after adding to ensure display</li>
+                                <li>• Maintain backup copies of CSV files</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Data Management Section -->
+        <section id="data-management" class="mb-12">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6">Data Management</h2>
+            
+            <div class="bg-white rounded-lg shadow-sm p-6">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-800 mb-4">CSV File Structure</h3>
+                        
+                        <div class="space-y-4">
+                            <div class="bg-blue-50 p-4 rounded">
+                                <h4 class="font-semibold text-blue-800 mb-2">Projects Data (projects.csv)</h4>
+                                <ul class="text-sm text-blue-700 space-y-1">
+                                    <li>• Project ID, Title, Description, Short Description</li>
+                                    <li>• Researchers, Asset Class, Data Used, Advanced Method</li>
+                                    <li>• Tags, Content Paragraphs (1-3)</li>
+                                    <li>• Introduction, Methodology, Key Findings</li>
+                                    <li>• Policy Implications, Conclusion, References</li>
+                                    <li>• Appendices, Author Note</li>
+                                </ul>
+                            </div>
+
+                            <div class="bg-green-50 p-4 rounded">
+                                <h4 class="font-semibold text-green-800 mb-2">Team Data (team.csv)</h4>
+                                <ul class="text-sm text-green-700 space-y-1">
+                                    <li>• Person ID, Name, Title, Role, Description</li>
+                                    <li>• Image, Category, Email, LinkedIn, Website</li>
+                                    <li>• Research Areas, Education, Experience</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-800 mb-4">Data Processing</h3>
+                        
+                        <div class="space-y-4">
+                            <div class="bg-gray-50 p-4 rounded">
+                                <h4 class="font-semibold text-gray-800 mb-2">How It Works</h4>
+                                <ol class="text-sm text-gray-700 space-y-1">
+                                    <li>1. CSV files read from <code>public/data/</code></li>
+                                    <li>2. Data parsed into JavaScript objects</li>
+                                    <li>3. Passed to React components</li>
+                                    <li>4. Content rendered dynamically</li>
+                                    <li>5. Changes reflect immediately after save</li>
+                                </ol>
+                            </div>
+
+                            <div class="bg-yellow-50 p-4 rounded">
+                                <h4 class="font-semibold text-yellow-800 mb-2">Best Practices</h4>
+                                <ul class="text-sm text-yellow-700 space-y-1">
+                                    <li>• Use UTF-8 encoding for CSV files</li>
+                                    <li>• Create backups before major changes</li>
+                                    <li>• Test changes in development first</li>
+                                    <li>• Use version control (Git) for tracking</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Troubleshooting -->
+        <section id="troubleshooting" class="mb-12">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6">Quick Troubleshooting</h2>
+            
+            <div class="bg-white rounded-lg shadow-sm p-6">
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-800 mb-3">Common Issues</h3>
+                        <div class="space-y-3">
+                            <div class="bg-red-50 p-3 rounded">
+                                <h4 class="font-medium text-red-800 mb-1">❌ Data Not Displaying</h4>
+                                <ul class="text-sm text-red-700 space-y-1">
+                                    <li>• Check CSV file uses UTF-8 encoding</li>
+                                    <li>• Verify all required fields are filled</li>
+                                    <li>• Ensure proper comma separation and quotes</li>
+                                    <li>• Clear browser cache and refresh</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-yellow-50 p-3 rounded">
+                                <h4 class="font-medium text-yellow-800 mb-1">⚠️ Images Not Loading</h4>
+                                <ul class="text-sm text-yellow-700 space-y-1">
+                                    <li>• Verify image file exists in public/images/</li>
+                                    <li>• Check file path matches CSV reference</li>
+                                    <li>• Ensure supported format (JPG, PNG, WebP)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-800 mb-3">Quick Fixes</h3>
+                        <div class="space-y-3">
+                            <div class="bg-blue-50 p-3 rounded">
+                                <h4 class="font-medium text-blue-800 mb-1">🔧 Development Issues</h4>
+                                <ul class="text-sm text-blue-700 space-y-1">
+                                    <li>• Run <code>npm install</code> to install dependencies</li>
+                                    <li>• Check if port 5173 is available</li>
+                                    <li>• Clear npm cache: <code>npm cache clean --force</code></li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-green-50 p-3 rounded">
+                                <h4 class="font-medium text-green-800 mb-1">✅ Testing Checklist</h4>
+                                <ul class="text-sm text-green-700 space-y-1">
+                                    <li>□ All projects display correctly</li>
+                                    <li>□ Team members appear with photos</li>
+                                    <li>□ No console errors</li>
+                                    <li>□ CSV files parse correctly</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Reference Section -->
+        <section class="mb-12">
+            <div class="bg-white rounded-lg shadow-sm p-6">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">Quick Reference Guide</h2>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- File Locations -->
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-800 mb-4">📁 Key File Locations</h3>
+                        <div class="space-y-2 text-sm">
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Projects Data:</span>
+                                <code class="bg-gray-100 px-2 py-1 rounded">public/data/projects.csv</code>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Team Data:</span>
+                                <code class="bg-gray-100 px-2 py-1 rounded">public/data/team.csv</code>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Images:</span>
+                                <code class="bg-gray-100 px-2 py-1 rounded">public/images/</code>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Project Utils:</span>
+                                <code class="bg-gray-100 px-2 py-1 rounded">src/utils/projectData.js</code>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Team Utils:</span>
+                                <code class="bg-gray-100 px-2 py-1 rounded">src/utils/teamData.js</code>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Common Commands -->
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-800 mb-4">⚡ Common Commands</h3>
+                        <div class="space-y-2 text-sm">
+                            <div class="bg-gray-50 p-2 rounded">
+                                <code>npm run dev</code>
+                                <span class="text-gray-600 ml-2">Start development server</span>
+                            </div>
+                            <div class="bg-gray-50 p-2 rounded">
+                                <code>npm run build</code>
+                                <span class="text-gray-600 ml-2">Build for production</span>
+                            </div>
+                            <div class="bg-gray-50 p-2 rounded">
+                                <code>npm run preview</code>
+                                <span class="text-gray-600 ml-2">Preview production build</span>
+                            </div>
+                            <div class="bg-gray-50 p-2 rounded">
+                                <code>npm run lint</code>
+                                <span class="text-gray-600 ml-2">Run code linting</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Critical Requirements -->
+                <div class="mt-8 p-4 bg-yellow-50 border-l-4 border-yellow-400">
+                    <h3 class="text-lg font-semibold text-yellow-800 mb-3">⚠️ Critical Requirements Checklist</h3>
+                    <div class="grid md:grid-cols-2 gap-4 text-sm">
+                        <div>
+                            <h4 class="font-medium text-yellow-800 mb-2">For Projects:</h4>
+                            <ul class="text-yellow-700 space-y-1">
+                                <li>□ Unique Project ID (increment from existing)</li>
+                                <li>□ All required fields filled</li>
+                                <li>□ Researcher names match team.csv exactly</li>
+                                <li>□ UTF-8 encoding used</li>
+                                <li>□ Commas in text fields wrapped in quotes</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-medium text-yellow-800 mb-2">For Team Members:</h4>
+                            <ul class="text-yellow-700 space-y-1">
+                                <li>□ Unique Person ID</li>
+                                <li>□ Category is "Research Leads" or "Research Assistants"</li>
+                                <li>□ Image file exists in public/images/</li>
+                                <li>□ Image path correctly referenced</li>
+                                <li>□ All contact information provided</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Support Section -->
+        <section class="mb-12">
+            <div class="bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg p-6 text-white">
+                <h2 class="text-xl font-bold mb-4">Need Additional Support?</h2>
+                
+                <div class="grid md:grid-cols-3 gap-4">
+                    <div class="bg-white/10 rounded-lg p-3">
+                        <h3 class="font-semibold mb-2">📚 Documentation</h3>
+                        <ul class="text-sm text-blue-100 space-y-1">
+                            <li>• React Documentation</li>
+                            <li>• Tailwind CSS Guide</li>
+                            <li>• CSV Data Guide</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-white/10 rounded-lg p-3">
+                        <h3 class="font-semibold mb-2">🛠 Development</h3>
+                        <ul class="text-sm text-blue-100 space-y-1">
+                            <li>• GitHub Repository</li>
+                            <li>• Browser Developer Tools</li>
+                            <li>• Code Examples</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-white/10 rounded-lg p-3">
+                        <h3 class="font-semibold mb-2">📞 Contact</h3>
+                        <ul class="text-sm text-blue-100 space-y-1">
+                            <li>• CAMP Research Team</li>
+                            <li>• Technical Support</li>
+                            <li>• Training Sessions</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <p class="text-gray-400">
+                    CAMP Website User Manual | Built with ❤️ by the CAMP team from TUM & Equation AG
+                </p>
+                <p class="text-gray-500 text-sm mt-2">
+                    This manual is part of the CAMP research website project documentation.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Highlight current section in navigation
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('nav a[href^="#"]');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                if (window.scrollY >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('text-gray-900');
+                link.classList.add('text-gray-600');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.remove('text-gray-600');
+                    link.classList.add('text-gray-900');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
