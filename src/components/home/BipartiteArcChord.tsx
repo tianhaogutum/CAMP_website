@@ -36,30 +36,26 @@ export const demoData = {
     "Wealth & Income Inequality"
   ],
   links: [
-    // (Stochastic Processes, Financial Time-Series) - left[9] -> right[3]
-    [9, 3],
-    // (Statistical Mechanics, Economic Networks) - left[8] -> right[1]
-    [8, 1],
-    // (Social Dynamics, Agent-based Modelling) - right[8] -> left[0] (reverse connection)
-    [0, 8],
-    // (Risk Management, Empirical Analysis) - right[7] -> left[3] (reverse connection)
-    [3, 7],
-    // (Random Matrix Theory, Risk Management) - left[7] -> right[7]
-    [7, 7],
-    // (Numerical Simulation, Climate Economics) - left[6] -> right[0]
-    [6, 0],
-    // (Market Microstructure, Deep Learning) - right[6] -> left[1] (reverse connection)
-    [1, 6],
-    // (Information Theory, Emergent Phenomena) - left[5] -> right[2]
-    [5, 2],
-    // (Statistical Mechanics, Emergent Phenomena) - left[8] -> right[2]
-    [8, 2],
-    // (Dynamical Systems Theory, Deep Learning) - left[2] -> left[1] (both in left, skip this connection)
-    // [2, 1], // Skipped as both are in left array
-    // (Agent-based Modelling, Social Dynamics) - left[0] -> right[8]
-    [0, 8],
-    // (Deep Learning, Financial Time-Series) - left[1] -> right[3]
-    [1, 3]
+    // Agent-based Modelling (left[0]) connects to all right items
+    [0, 0], [0, 1], [0, 2], [0, 3], [0, 4], [0, 5], [0, 6], [0, 7], [0, 8], [0, 9],
+    // Deep Learning (left[1]) connects to all right items
+    [1, 0], [1, 1], [1, 2], [1, 3], [1, 4], [1, 5], [1, 6], [1, 7], [1, 8], [1, 9],
+    // Dynamical Systems Theory (left[2]) connects to all right items
+    [2, 0], [2, 1], [2, 2], [2, 3], [2, 4], [2, 5], [2, 6], [2, 7], [2, 8], [2, 9],
+    // Empirical Analysis (left[3]) connects to all right items
+    [3, 0], [3, 1], [3, 2], [3, 3], [3, 4], [3, 5], [3, 6], [3, 7], [3, 8], [3, 9],
+    // Game Theory (left[4]) connects to all right items
+    [4, 0], [4, 1], [4, 2], [4, 3], [4, 4], [4, 5], [4, 6], [4, 7], [4, 8], [4, 9],
+    // Information Theory (left[5]) connects to all right items
+    [5, 0], [5, 1], [5, 2], [5, 3], [5, 4], [5, 5], [5, 6], [5, 7], [5, 8], [5, 9],
+    // Numerical Simulation (left[6]) connects to all right items
+    [6, 0], [6, 1], [6, 2], [6, 3], [6, 4], [6, 5], [6, 6], [6, 7], [6, 8], [6, 9],
+    // Random Matrix Theory (left[7]) connects to all right items
+    [7, 0], [7, 1], [7, 2], [7, 3], [7, 4], [7, 5], [7, 6], [7, 7], [7, 8], [7, 9],
+    // Statistical Mechanics (left[8]) connects to all right items
+    [8, 0], [8, 1], [8, 2], [8, 3], [8, 4], [8, 5], [8, 6], [8, 7], [8, 8], [8, 9],
+    // Stochastic Processes (left[9]) connects to all right items
+    [9, 0], [9, 1], [9, 2], [9, 3], [9, 4], [9, 5], [9, 6], [9, 7], [9, 8], [9, 9]
   ]
 };
 
