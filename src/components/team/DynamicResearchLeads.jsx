@@ -12,6 +12,7 @@ export function DynamicResearchLeads() {
     const loadTeamData = async () => {
       try {
         const data = await getResearchLeads();
+        console.log('Research leads data:', data);
         setTeamMembers(data);
       } catch (error) {
         console.error('Error loading research leads:', error);

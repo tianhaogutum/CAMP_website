@@ -1,4 +1,4 @@
-// 读取CSV文件
+// Read CSV file
 export const readProjectsFromCSV = async () => {
   try {
     console.log('Reading CSV file...');
@@ -11,14 +11,14 @@ export const readProjectsFromCSV = async () => {
     const csvText = await response.text();
     console.log('CSV file loaded, length:', csvText.length);
     
-    // 改进的CSV解析，处理引号内的逗号和换行符
+    // Improved CSV parsing, handling commas and newlines within quotes
     const lines = csvText.split('\n').filter(line => line.trim());
     if (lines.length === 0) {
       console.log('No lines found in CSV');
       return [];
     }
     
-    // 解析第一行获取headers
+    // Parse first line to get headers
     const headerLine = lines[0];
     const headers = [];
     let currentHeader = '';
@@ -36,7 +36,7 @@ export const readProjectsFromCSV = async () => {
         currentHeader += char;
       }
     }
-    headers.push(currentHeader.trim()); // 添加最后一个header
+    headers.push(currentHeader.trim()); // Add the last header
     
     console.log('CSV headers:', headers);
     console.log('Number of headers:', headers.length);
@@ -47,7 +47,7 @@ export const readProjectsFromCSV = async () => {
       const line = lines[i].trim();
       if (!line) continue;
       
-      // 解析数据行
+      // Parse data row
       const values = [];
       let current = '';
       let inQuotes = false;
@@ -64,7 +64,7 @@ export const readProjectsFromCSV = async () => {
           current += char;
         }
       }
-      values.push(current.trim()); // 添加最后一个值
+      values.push(current.trim()); // Add the last value
       
       console.log(`Row ${i} values count:`, values.length);
       console.log(`Row ${i} first few values:`, values.slice(0, 5));
@@ -90,7 +90,7 @@ export const readProjectsFromCSV = async () => {
   }
 };
 
-// 根据项目ID获取项目数据
+// Get project data by project ID
 export const getProjectById = async (projectId) => {
   console.log('Getting project by ID:', projectId, 'type:', typeof projectId);
   const projects = await readProjectsFromCSV();
@@ -100,7 +100,7 @@ export const getProjectById = async (projectId) => {
     const projectIdValue = project['Project ID'];
     console.log('Checking project:', projectIdValue, 'type:', typeof projectIdValue, 'against:', projectId, 'type:', typeof projectId);
     
-    // 尝试多种匹配方式
+    // Try multiple matching methods
     return projectIdValue == projectId || 
            projectIdValue === projectId.toString() || 
            projectIdValue.toString() === projectId.toString() ||
@@ -111,7 +111,7 @@ export const getProjectById = async (projectId) => {
   return project;
 };
 
-// 获取所有项目
+// Get all projects
 export const getAllProjects = async () => {
   return await readProjectsFromCSV();
 };

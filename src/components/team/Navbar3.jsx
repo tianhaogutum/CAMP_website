@@ -54,7 +54,7 @@ export function Navbar3() {
         href="#main-content"
         className="sr-only focus:fixed focus:z-[1000] focus:top-2 focus:left-2 focus:not-sr-only focus:px-3 focus:py-2 focus:bg-white focus:text-black focus:rounded focus:shadow"
       >
-        跳到主要内容
+        Skip to main content
       </a>
       <button
         className="flex size-12 flex-col justify-center lg:hidden"

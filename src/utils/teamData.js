@@ -1,17 +1,17 @@
-// 读取团队成员CSV文件
+// Read team members CSV file
 export const readTeamFromCSV = async () => {
   try {
     const response = await fetch('/data/team.csv');
     const csvText = await response.text();
     
-    // 解析CSV
+    // Parse CSV with proper handling of quoted fields
     const lines = csvText.split('\n');
-    const headers = lines[0].split(',');
+    const headers = parseCSVLine(lines[0]);
     const teamMembers = [];
     
     for (let i = 1; i < lines.length; i++) {
       if (lines[i].trim()) {
-        const values = lines[i].split(',');
+        const values = parseCSVLine(lines[i]);
         const member = {};
         
         headers.forEach((header, index) => {
@@ -29,29 +29,56 @@ export const readTeamFromCSV = async () => {
   }
 };
 
-// 根据类别获取团队成员
+// Helper function to parse CSV line with proper quote handling
+function parseCSVLine(line) {
+  const result = [];
+  let current = '';
+  let inQuotes = false;
+  
+  for (let i = 0; i < line.length; i++) {
+    const char = line[i];
+    
+    if (char === '"') {
+      inQuotes = !inQuotes;
+    } else if (char === ',' && !inQuotes) {
+      result.push(current);
+      current = '';
+    } else {
+      current += char;
+    }
+  }
+  
+  result.push(current);
+  return result;
+}
+
+// Get team members by category
 export const getTeamByCategory = async (category) => {
   const teamMembers = await readTeamFromCSV();
   return teamMembers.filter(member => member.Category === category);
 };
 
-// 根据ID获取团队成员
+// Get team member by ID
 export const getTeamMemberById = async (personId) => {
   const teamMembers = await readTeamFromCSV();
   return teamMembers.find(member => member['Person ID'] === personId.toString());
 };
 
-// 获取所有团队成员
+// Get all team members
 export const getAllTeamMembers = async () => {
   return await readTeamFromCSV();
 };
 
-// 获取研究负责人
+// Get research leads
 export const getResearchLeads = async () => {
-  return await getTeamByCategory('Research Leads');
+  const allMembers = await readTeamFromCSV();
+  console.log('All team members:', allMembers);
+  const researchLeads = allMembers.filter(member => member.Category === 'Research Leads');
+  console.log('Filtered research leads:', researchLeads);
+  return researchLeads;
 };
 
-// 获取研究助理
+// Get research assistants
 export const getResearchAssistants = async () => {
   return await getTeamByCategory('Research Assistants');
 };

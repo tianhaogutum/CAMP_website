@@ -36,25 +36,25 @@ export const demoData = {
     "Wealth & Income Inequality"
   ],
   links: [
-    // Agent-based Modelling (left[0]) 连接到 right 的所有项目
+    // Agent-based Modelling (left[0]) connects to all right items
     [0, 0], [0, 1], [0, 2], [0, 3], [0, 4], [0, 5], [0, 6], [0, 7], [0, 8], [0, 9],
-    // Deep Learning (left[1]) 连接到 right 的所有项目
+    // Deep Learning (left[1]) connects to all right items
     [1, 0], [1, 1], [1, 2], [1, 3], [1, 4], [1, 5], [1, 6], [1, 7], [1, 8], [1, 9],
-    // Dynamical Systems Theory (left[2]) 连接到 right 的所有项目
+    // Dynamical Systems Theory (left[2]) connects to all right items
     [2, 0], [2, 1], [2, 2], [2, 3], [2, 4], [2, 5], [2, 6], [2, 7], [2, 8], [2, 9],
-    // Empirical Analysis (left[3]) 连接到 right 的所有项目
+    // Empirical Analysis (left[3]) connects to all right items
     [3, 0], [3, 1], [3, 2], [3, 3], [3, 4], [3, 5], [3, 6], [3, 7], [3, 8], [3, 9],
-    // Game Theory (left[4]) 连接到 right 的所有项目
+    // Game Theory (left[4]) connects to all right items
     [4, 0], [4, 1], [4, 2], [4, 3], [4, 4], [4, 5], [4, 6], [4, 7], [4, 8], [4, 9],
-    // Information Theory (left[5]) 连接到 right 的所有项目
+    // Information Theory (left[5]) connects to all right items
     [5, 0], [5, 1], [5, 2], [5, 3], [5, 4], [5, 5], [5, 6], [5, 7], [5, 8], [5, 9],
-    // Numerical Simulation (left[6]) 连接到 right 的所有项目
+    // Numerical Simulation (left[6]) connects to all right items
     [6, 0], [6, 1], [6, 2], [6, 3], [6, 4], [6, 5], [6, 6], [6, 7], [6, 8], [6, 9],
-    // Random Matrix Theory (left[7]) 连接到 right 的所有项目
+    // Random Matrix Theory (left[7]) connects to all right items
     [7, 0], [7, 1], [7, 2], [7, 3], [7, 4], [7, 5], [7, 6], [7, 7], [7, 8], [7, 9],
-    // Statistical Mechanics (left[8]) 连接到 right 的所有项目
+    // Statistical Mechanics (left[8]) connects to all right items
     [8, 0], [8, 1], [8, 2], [8, 3], [8, 4], [8, 5], [8, 6], [8, 7], [8, 8], [8, 9],
-    // Stochastic Processes (left[9]) 连接到 right 的所有项目
+    // Stochastic Processes (left[9]) connects to all right items
     [9, 0], [9, 1], [9, 2], [9, 3], [9, 4], [9, 5], [9, 6], [9, 7], [9, 8], [9, 9]
   ]
 };
@@ -64,7 +64,7 @@ export default function BipartiteArcChord({ left, right, links, leftTitle, right
   const wrapperRef = useRef<HTMLDivElement>(null);
   const [containerSize, setContainerSize] = useState<{ width: number; height: number } | null>(null);
 
-  // 仅在数据变更时重建矩阵，避免无关渲染
+  // Only rebuild matrix when data changes, avoid unnecessary rendering
   const computed = useMemo(() => {
     const data = links.map(([i, j]) => ({ source: left[i], target: right[j], value: 1 }));
     const names = d3.sort(d3.union(data.map(d => d.source), data.map(d => d.target)));
@@ -78,7 +78,7 @@ export default function BipartiteArcChord({ left, right, links, leftTitle, right
     return { names, matrix };
   }, [left, right, links]);
 
-  // 观察容器尺寸变化，触发重绘（节流至 rAF）
+  // Observe container size changes, trigger redraw (throttled to rAF)
   useEffect(() => {
     if (!wrapperRef.current) return;
     const elem = wrapperRef.current;
@@ -92,7 +92,7 @@ export default function BipartiteArcChord({ left, right, links, leftTitle, right
       });
     });
     ro.observe(elem);
-    // 初始化尺寸
+    // Initialize size
     const rect = elem.getBoundingClientRect();
     setContainerSize({ width: rect.width, height: rect.height });
     return () => {
@@ -149,7 +149,7 @@ export default function BipartiteArcChord({ left, right, links, leftTitle, right
       const leftTitleGroup = svg.append("g")
          .attr("transform", `translate(${-width / 1.75}, 0)`);
 
-      // 创建竖列标题 "Research Methods"
+      // Create vertical title "Research Methods"
       const leftTitleText = "Research Methods";
       const leftTitleWords = leftTitleText.split(" ");
       
@@ -166,13 +166,13 @@ export default function BipartiteArcChord({ left, right, links, leftTitle, right
            .text(word);
       });
 
-      // 给左侧标题添加自适应背景框（包含所有文字）
+      // Add adaptive background box for left title (including all text)
       try {
         const paddingX = 10;
         const paddingY = 6;
         const textNodes = leftTitleGroup.selectAll("text").nodes() as SVGTextElement[];
         if (textNodes.length > 0) {
-          // 计算所有文字元素的边界
+          // Calculate boundaries of all text elements
           let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
           textNodes.forEach(node => {
             const b = node.getBBox();
@@ -196,13 +196,13 @@ export default function BipartiteArcChord({ left, right, links, leftTitle, right
       } catch {}
     }
 
-    // 添加右侧标题 - Research Topics
+    // Add right title - Research Topics
     if (!isSmall) {
-      const rightTitleX = width / 1.75 - 12; // 调整位置到合适距离
+      const rightTitleX = width / 1.75 - 12; // Adjust position to appropriate distance
       const rightTitleGroup = svg.append("g")
          .attr("transform", `translate(${rightTitleX}, 0)`);
 
-      // 创建竖列标题 "Research Topics"
+      // Create vertical title "Research Topics"
       const rightTitleText = "Research Topics";
       const rightTitleWords = rightTitleText.split(" ");
       
@@ -219,13 +219,13 @@ export default function BipartiteArcChord({ left, right, links, leftTitle, right
            .text(word);
       });
 
-      // 给右侧标题添加自适应背景框（包含所有文字）
+      // Add adaptive background box for right title (including all text)
       try {
         const paddingX = 10;
         const paddingY = 6;
         const textNodes = rightTitleGroup.selectAll("text").nodes() as SVGTextElement[];
         if (textNodes.length > 0) {
-          // 计算所有文字元素的边界
+          // Calculate boundaries of all text elements
           let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
           textNodes.forEach(node => {
             const b = node.getBBox();
@@ -249,12 +249,12 @@ export default function BipartiteArcChord({ left, right, links, leftTitle, right
       } catch {}
     }
 
-    // 压缩Y轴比例，使图形呈椭圆形
+    // Compress Y-axis ratio to make the graph elliptical
     const compressionY = isSmall ? 0.9 : 0.75;
     const verticalOffset = isSmall ? -10 : -36;
     const chartGroup = svg.append("g")
       .attr("transform", `translate(0, ${verticalOffset}) scale(1, ${compressionY})`);
-    // 独立的标签层（不缩放文字），小屏隐藏标签避免拥挤与裁切
+    // Independent label layer (no text scaling), hide labels on small screens to avoid crowding and clipping
     const labelsGroup = isSmall ? null : svg.append("g");
 
     const chords = chord(matrix);
@@ -265,7 +265,7 @@ export default function BipartiteArcChord({ left, right, links, leftTitle, right
       "Game Theory"
     ];
     
-    // 预计算相邻关系，便于快速高亮相关弧线
+    // Pre-calculate adjacency relationships for quick highlighting of related arcs
     const connectivity = new Map<number, Set<number>>();
     for (const c of chords) {
       const s = Number(c.source.index);
@@ -281,16 +281,16 @@ export default function BipartiteArcChord({ left, right, links, leftTitle, right
       .data(chords.groups)
       .join("g");
 
-    // 让隐藏项不响应鼠标事件
+    // Make hidden items not respond to mouse events
     group.style("pointer-events", (d: any) => hiddenItems.includes(names[d.index]) ? "none" : "auto");
 
     group.append("path")
         .attr("fill", d => {
-          // 将指定项目对应的块颜色设为白色（背景色）
+          // Set the color of specified items to white (background color)
           if (hiddenItems.includes(names[d.index])) {
             return "#ffffff";
           }
-          // 指定的项目使用蓝灰色
+          // Specified items use blue-gray color
           const blueGrayItems = [
             "Stochastic Processes",
             "Statistical Mechanics",
@@ -301,7 +301,7 @@ export default function BipartiteArcChord({ left, right, links, leftTitle, right
             "Market Microstructure",
             "Information Theory"
           ];
-          // 指定的项目使用橙色
+          // Specified items use orange color
           const orangeItems = [
             "Agent-based Modelling",
             "Climate Economics",
@@ -377,7 +377,7 @@ ${d3.sum(chords, c => {
         .join("path")
           .style("mix-blend-mode", "multiply")
           .attr("fill", d => {
-            // 将指定项目相关的连接线颜色设为白色（背景色），其他使用浅灰色
+            // Set the color of connection lines related to specified items to white (background color), others use light gray
             return (hiddenItems.includes(names[d.target.index]) || hiddenItems.includes(names[d.source.index])) ? "#ffffff" : "#d1d5db";
           })
           .style("opacity", d => (hiddenItems.includes(names[d.target.index]) || hiddenItems.includes(names[d.source.index])) ? 0 : 1)
@@ -400,21 +400,21 @@ ${d3.sum(chords, c => {
     ribbonSel.append("title")
       .text(d => `${names[d.source.index]} → ${names[d.target.index]} ${Number(d.source.value) || 0}`);
 
-    // 悬停交互：只显示与目标分组相关的弧和连带
+    // Hover interaction: only show arcs and connections related to the target group
     const highlightByIndex = (i: number) => {
       if (hiddenItems.includes(names[i])) return;
-      // 所有关联的分组
+      // All related groups
       const connected = new Set<number>([i]);
       const setI = connectivity.get(i);
       if (setI) {
         for (const v of setI) connected.add(v);
       }
 
-      // 组块与标签
+      // Blocks and labels
       group.selectAll("path").style("opacity", (d: any) => hiddenItems.includes(names[d.index]) ? 0 : (connected.has(Number(d.index)) ? 1 : 0));
       if (labelsGroup) labelsGroup.selectAll("text").style("opacity", (d: any) => hiddenItems.includes(names[d.index]) ? 0 : (connected.has(Number(d.index)) ? 1 : 0.15));
 
-      // 连带
+      // Connections
       ribbonSel.style("opacity", (d: any) => {
         const hide = hiddenItems.includes(names[d.source.index]) || hiddenItems.includes(names[d.target.index]);
         if (hide) return 0;
@@ -428,16 +428,16 @@ ${d3.sum(chords, c => {
       ribbonSel.style("opacity", (d: any) => (hiddenItems.includes(names[d.source.index]) || hiddenItems.includes(names[d.target.index])) ? 0 : 1);
     };
 
-    // 添加鼠标悬停交互效果
+    // Add mouse hover interaction effects
     group.on("mouseover", (_event: any, d: any) => {
       const hoveredIndex = Number(d.index);
       if (hiddenItems.includes(names[hoveredIndex])) return;
       
-      // 高亮悬停的节点和相关的弦
+      // Highlight hovered node and related chords
       highlightByIndex(hoveredIndex);
     });
 
-    // 添加鼠标离开重置效果
+    // Add mouse leave reset effect
     group.on("mouseout", resetHighlight);
 
     // Cleanup function

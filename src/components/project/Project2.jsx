@@ -13,7 +13,7 @@ export default function Project2() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // 硬编码的备用数据
+  // Hardcoded fallback data
   const fallbackData = {
     "Project ID": "2",
     "Title": "Time-Series Forecasting for Leveraged Buyouts (LBOs)",
