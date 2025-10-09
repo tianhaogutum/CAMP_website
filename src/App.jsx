@@ -17,6 +17,7 @@ import Project11 from './components/project/Project11'
 import Project12 from './components/project/Project12'
 import ProjectsPage from './components/projects/ProjectsPage'
 import TeamPage from './components/team/TeamPage'
+import TestCSV from './components/TestCSV'
 import { Imprint } from './components/legal/Imprint'
 import { DataProtection } from './components/legal/DataProtection'
 import { SFDR } from './components/legal/SFDR'
@@ -44,6 +45,7 @@ function App() {
         <Route path="/project12" element={<Project12 />} />
         <Route path="/projects" element={<ProjectsPage />} />
         <Route path="/team" element={<TeamPage />} />
+        <Route path="/test-csv" element={<TestCSV />} />
         <Route path="/imprint" element={<Imprint />} />
         <Route path="/data-protection" element={<DataProtection />} />
         <Route path="/sfdr" element={<SFDR />} />
